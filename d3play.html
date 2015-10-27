@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+</head>
+<body>
+
+<script>
+
+
+     var canvas = d3.select('body')
+        .append('svg')
+        .attr("width",500)
+        .attr("height",500);
+var color = d3.scale.ordinal()
+                    .range([getRandomColor(3),getRandomColor(5),getRandomColor(3)]);
+  var group = canvas.append('g')
+           .attr('transform','translate(200,200)');
+  var data = [10,50,80];
+  var r = 200;
+
+
+  var arc = d3.svg.arc()
+    .innerRadius(100)
+    .outerRadius(r)
+var pie = d3.layout.pie()
+      .value(function(d){return d;})
+var arcs =group.selectAll('.arc')
+      .data(pie(data))
+      .enter()
+      .append('g')
+      .attr('class','arc')
+
+arcs.append('path')
+      .attr('d',arc)
+      .attr('fill',function(d){return color(d.data)})
+arcs.append('text')
+      .attr('transform',function(d){return "translate("+ arc.centroid(d) + ")";})
+      .text(function(d){return d.data;})
+
+function getRandomColor(brightness){
+    //6 levels of brightness from 0 to 5, 0 being the darkest
+    var rgb = [Math.random() * 256, Math.random() * 256, Math.random() * 256];
+    var mix = [brightness*51, brightness*51, brightness*51]; //51 => 255/5
+    var mixedrgb = [rgb[0] + mix[0], rgb[1] + mix[1], rgb[2] + mix[2]].map(function(x){ return Math.round(x/2.0)})
+    return "rgb(" + mixedrgb.join(",") + ")";
+  }
+
+
+</script>
+
+</body>
+</html>
