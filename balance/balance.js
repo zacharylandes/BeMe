@@ -1,6 +1,14 @@
 Tasks = new Mongo.Collection("tasks");
 
 if (Meteor.isServer) {
+    Tasks.allow({
+    'insert': function (userId,doc) {
+      /* user and doc checks ,
+      return true to allow insert */
+       return (userId && doc.owner === userId);
+    }
+  });
+
   // This code only runs on the server
   // Only publish tasks that are public or belong to the current user
   Meteor.publish("tasks", function () {
@@ -34,24 +42,30 @@ Template.body.helpers({
   });
 
   Template.body.events({
-    "submit .new-task": function (event) {
+    "change .new-task": function (event) {
       // Prevent default browser form submit
       event.preventDefault();
       // Get value from form element
-      var text = event.target.text.value;
+      var pleasure = event.target.value;
+      var achievement = event.target.value
+ console.log(pleasure)
+ console.log(achievement)
 
       // Insert a task into the collection
       Tasks.insert({
-        text: text,
+        please: pleasure,
+        achievement: achievement,
         createdAt: new Date(),            // current time
         owner: Meteor.userId(),           // _id of logged in user
         username: Meteor.user().username
       });
+       console.log(pleasure)
+ console.log(achievement)
 
     // Insert a task into the collection
-      Meteor.call("addTask", text);
+      Meteor.call("addTask", pleasure, achievement);
       // Clear form
-      event.target.text.value = "";
+      event.target.value = "";
     },
   "change .hide-completed input": function (event) {
       Session.set("hideCompleted", event.target.checked);
@@ -84,14 +98,15 @@ Template.body.helpers({
 
   }
   Meteor.methods({
-  addTask: function (text) {
+  addTask: function (pleasure, achievement) {
     // Make sure the user is logged in before inserting a task
     if (! Meteor.userId()) {
       throw new Meteor.Error("not-authorized");
     }
 
     Tasks.insert({
-      text: text,
+      pleasure: pleasure,
+      achievement: achievement,
       createdAt: new Date(),
       owner: Meteor.userId(),
       username: Meteor.user().username

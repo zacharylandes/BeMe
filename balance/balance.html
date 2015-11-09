@@ -7,7 +7,7 @@
     <header>
       <h1>Todo List ({{incompleteCount}})</h1>
           <form class="new-task">
-        <input type="text" name="text" placeholder="Type to add new tasks" />
+        <input type="range" name="pleasure" min = '1' max = '10' value="1" />
       </form>
     </header>
           <label class="hide-completed">
@@ -17,7 +17,7 @@
         {{> loginButtons}}
            {{#if currentUser}}
         <form class="new-task">
-          <input type="text" name="text" placeholder="Type to add new tasks" />
+       <input type="range" name="achievement" min = '1' max = '10' value="1" />
         </form>
       {{/if}}
 
