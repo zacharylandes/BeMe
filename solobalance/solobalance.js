@@ -1,19 +1,19 @@
 Activities = new Mongo.Collection("Activities");
 
 if (Meteor.isServer) {
-    Activities.allow({
+  Activities.allow({
     'insert': function (userId,doc) {
       /* user and doc checks ,
       return true to allow insert */
-       return (userId && doc.owner === userId);
+      return (userId && doc.owner === userId);
     }
   });
   // This code only runs on the server
   Meteor.publish("activities", function () {
     return Activities.find({
       $or: [
-        { private: {$ne: true} },
-        { owner: this.userId }
+      { private: {$ne: true} },
+      { owner: this.userId }
       ]
     });
   });
@@ -27,11 +27,11 @@ if (Meteor.isClient) {
   Template.body.helpers({
     activities: function () {
           // Otherwise, return all of the tasks
-        return Activities.find({}, {sort: {createdAt: -1}});
-      }    })
+          return Activities.find({}, {sort: {createdAt: -1}});
+        }    })
 
 
- Template.body.events({
+  Template.body.events({
     "change .new-range, submit .new-activity": function (event) {
       // Prevent default browser form submit
       event.preventDefault();
@@ -39,7 +39,7 @@ if (Meteor.isClient) {
       var name = event.target.name.value;
       var pleasure = event.target.value;
       var achievement = event.target.value;
-      var add = pleasure + achievement
+      var add = parseInt(pleasure) + parseInt(achievement)
 
       // Insert a activity into the collection
       Activities.insert({
@@ -50,33 +50,37 @@ if (Meteor.isClient) {
         owner: Meteor.userId(),           // _id of logged in user
         username: Meteor.user().username
       });
-    console.log(achievement+pleasure);
-      console.log(name);
+      console.log(add);
+      console.log(achievement);
+      console.log(pleasure);
 
 
       // Clear form
-    Meteor.call("addActivity", pleasure, achievement);
+      Meteor.call("addActivity",name, pleasure, achievement);
       // Clear form
-      event.target.name.value = "";
+      name = "";
+      pleasure = 0;
+      achievement = 0;
+      add = 0;
     },
-  "change .hide-completed input": function (event) {
+    "change .hide-completed input": function (event) {
       Session.set("hideCompleted", event.target.checked);
     }
   });
 
 
-  Template.activity.helpers({
-    isOwner: function () {
-      return this.owner === Meteor.userId();
-    }
-  });
+Template.activity.helpers({
+  isOwner: function () {
+    return this.owner === Meteor.userId();
+  }
+});
 
-    Template.activity.events({
-    "click .toggle-checked": function () {
+Template.activity.events({
+  "click .toggle-checked": function () {
       // Set the checked property to the opposite of its current value
       Meteor.call("setChecked", this._id, ! this.checked);
     },
-   "click .delete": function () {
+    "click .delete": function () {
       Meteor.call("deleteTask", this._id);
     },
     "click .toggle-private": function () {
@@ -84,10 +88,10 @@ if (Meteor.isClient) {
     }
   });
 
-  Accounts.ui.config({
-      passwordSignupFields: 'USERNAME_AND_OPTIONAL_EMAIL' });
+Accounts.ui.config({
+  passwordSignupFields: 'USERNAME_AND_OPTIONAL_EMAIL' });
 }
-  Meteor.methods({
+Meteor.methods({
   addActivity: function (name, pleasure, achievement) {
     // Make sure the user is logged in before inserting a activity
     if (! Meteor.userId()) {
@@ -102,7 +106,7 @@ if (Meteor.isClient) {
       username: Meteor.user().username
     });
   },
-   deleteActivity: function (activityId) {
+  deleteActivity: function (activityId) {
     var activity = Activities.findOne(activityId);
     if (activity.private && activity.owner !== Meteor.userId()) {
       // If the activity is private, make sure only the owner can delete it

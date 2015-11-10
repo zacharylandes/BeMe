@@ -8,41 +8,41 @@
       <h1>Actividados </h1>
       <form class="new-activity">
         <input type="text" name="name" placeholder="Type to add new activities" />
-          </form>
+      </form>
       <form class="new-range">
        <input type="range" name="pleasure" min = '1' max = '10' defaultValue="1" />
-        <input type="range" name="achievement" min = '1' max = '10' defaultValue="1" />
-      </form>
-             {{> loginButtons}}
-           {{#if currentUser}}
-       {{/if}}
+       <input type="range" name="achievement" min = '1' max = '10' defaultValue="1" />
+     </form>
+     {{> loginButtons}}
+     {{#if currentUser}}
+     {{/if}}
 
 
-      {{#each activities}}
-        {{> activity}}
-      {{/each}}
+     {{#each activities}}
+     {{> activity}}
+     {{/each}}
 
 
-    </header>
-  </div>
-{{target}}
+   </header>
+ </div>
+ {{target}}
 
 
 </body>
 
 
 <template name='activity'>
-      <h1 >
-        {{name}}
-      </h1>
-      <h1>
-        {{pleasure}}
-       </h1>
-      <h1>
-        {{achievement}}
-      </h1>
-      <h1>
-        {{add}}
-      </h1>
+  <h1 >
+    {{name}}
+  </h1>
+  <h1>
+    {{pleasure}}
+  </h1>
+  <h1>
+    {{achievement}}
+  </h1>
+  <h1>
+    {{add}}
+  </h1>
 
 </template>
