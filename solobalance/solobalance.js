@@ -1,4 +1,7 @@
 Activities = new Mongo.Collection("Activities");
+Router.route('/target');
+Router.route('/');
+
 if (Meteor.isServer) {
     Activities.allow({
     'insert': function (userId,doc) {
@@ -25,23 +28,12 @@ if (Meteor.isClient) {
 
   Template.body.helpers({
     activities: function () {
-      if (Session.get("hideCompleted")) {
-        // If hide completed is checked, filter tasks
-        return Activities.find({checked: {$ne: true}}, {sort: {createdAt: -1}});
-      } else {
-        // Otherwise, return all of the tasks
+          // Otherwise, return all of the tasks
         return Activities.find({}, {sort: {createdAt: -1}});
-      }
-    },
-    hideCompleted: function () {
-      return Session.get("hideCompleted");
-    },
-    incompleteCount: function () {
-      return Activities.find({checked: {$ne: true}}).count();
-    }
-  });
+      }    })
 
-  Template.body.events({
+
+ Template.body.events({
     "change .new-range, submit .new-activity": function (event) {
       // Prevent default browser form submit
       event.preventDefault();
@@ -49,6 +41,7 @@ if (Meteor.isClient) {
       var name = event.target.name.value;
       var pleasure = event.target.value;
       var achievement = event.target.value;
+      var add = pleasure + achievement
 
       // Insert a activity into the collection
       Activities.insert({
@@ -59,14 +52,14 @@ if (Meteor.isClient) {
         owner: Meteor.userId(),           // _id of logged in user
         username: Meteor.user().username
       });
-      console.log(pleasure)
-      console.log(achievement);
+    console.log(achievement+pleasure);
       console.log(name);
+
 
       // Clear form
     Meteor.call("addActivity", pleasure, achievement);
       // Clear form
-      event.target.value = "";
+      event.target.name.value = "";
     },
   "change .hide-completed input": function (event) {
       Session.set("hideCompleted", event.target.checked);

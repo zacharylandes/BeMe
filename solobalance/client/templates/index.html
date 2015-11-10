@@ -1,0 +1,48 @@
+<head>
+  <title>Gimme Activity</title>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1>Actividados </h1>
+      <form class="new-activity">
+        <input type="text" name="name" placeholder="Type to add new activities" />
+          </form>
+      <form class="new-range">
+       <input type="range" name="pleasure" min = '1' max = '10' defaultValue="1" />
+        <input type="range" name="achievement" min = '1' max = '10' defaultValue="1" />
+      </form>
+             {{> loginButtons}}
+           {{#if currentUser}}
+       {{/if}}
+
+<ul>
+      {{#each activities}}
+        {{> activity}}
+      {{/each}}
+    </ul>
+
+    </header>
+  </div>
+
+
+
+</body>
+
+
+<template name='activity'>
+      <h1 >
+        {{name}}
+      </h1>
+      <h1>
+        {{pleasure}}
+       </h1>
+      <h1>
+        {{achievement}}
+      </h1>
+      <h1>
+        {{add}}
+      </h1>
+
+</template>
