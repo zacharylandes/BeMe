@@ -1,6 +1,4 @@
 Activities = new Mongo.Collection("Activities");
-Router.route('/target');
-Router.route('/');
 
 if (Meteor.isServer) {
     Activities.allow({
