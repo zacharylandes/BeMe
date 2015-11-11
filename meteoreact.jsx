@@ -1,6 +1,9 @@
 // Define a collection to hold our tasks
 Activities = new Mongo.Collection("activities");
 if (Meteor.isClient) {
+   Accounts.ui.config({
+    passwordSignupFields: "USERNAME_ONLY"
+  });
   // This code is executed on the client only
 
   Meteor.startup(function () {

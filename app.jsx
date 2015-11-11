@@ -7,7 +7,8 @@ App = React.createClass({
   // Loads items from the Tasks collection and puts them on this.data.tasks
   getMeteorData() {
     return {
-    activities: Activities.find({}, {sort: {createdAt: -1}}).fetch()
+    activities: Activities.find({}, {sort: {createdAt: -1}}).fetch(),
+
     }
   },
 
@@ -26,7 +27,9 @@ App = React.createClass({
 
     Activities.insert({
       name:name,
-      createdAt: new Date() // current time
+      createdAt: new Date(),
+          owner: Meteor.userId(),           // _id of logged in user
+      username: Meteor.user().username // current time
     });
         console.log(name)
 
@@ -45,7 +48,9 @@ App = React.createClass({
     Activities.insert({
       pleasure:pleasure,
       achievement:achievement,
-      createdAt: new Date() // current time
+      createdAt: new Date(),
+          owner: Meteor.userId(),           // _id of logged in user
+      username: Meteor.user().username  // current time
     });
     console.log(pleasure)
     console.log(achievement)
@@ -65,6 +70,9 @@ App = React.createClass({
       <div className="container">
         <header>
           <h1>Todo List</h1>
+
+          <AccountsUIWrapper />
+
 
           <form className="new-task" onSubmit={this.handleSubmit} >
             <input
