@@ -11,14 +11,13 @@ App = React.createClass({
 
     mapData: function() {
 
-    var raw = Activities.find({}).fetch()
-    var adds = []
-    for (let i=0; i < raw.length; i++) {
-      adds.push(raw[i].add)
-    }
+    var raw = Activities.find({}).fetch();
+    var score = _.last(raw).activity.score;
+    var cat = _.last(raw).activity.cat
+
 
 //         activites: Activities.find({}).fetch()
-    console.log(adds, raw)
+    console.log(score, cat)
 
 // console.log(Activities.find({add:social}).fetch())
 
