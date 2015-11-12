@@ -70,17 +70,14 @@ App = React.createClass({
       <div className="container">
         <header>
           <h1>Todo List</h1>
-
           <AccountsUIWrapper />
-
-
           <form className="new-task" onSubmit={this.handleSubmit} >
             <input
               type="text"
               ref="textInput"
               placeholder="Type to add new tasks" />
           </form>
-           <form className="new-task" onChange={this.handleChange} >
+          <form className="new-task" onChange={this.handleChange} >
             <input
               type="range"
               ref="prange"
@@ -97,7 +94,74 @@ App = React.createClass({
         <ul>
           {this.renderActivities()}
         </ul>
+    </div>
+      );
+      }
+});
+
+
+
+var Chart = React.createClass({
+  propTypes: {
+    data: React.PropTypes.array,
+    domain: React.PropTypes.object
+  },
+
+  componentDidMount: function() {
+    var el = this.getDOMNode();
+    d3Chart.create(el, {
+      width: '100%',
+      height: '300px'
+    }, this.getChartState());
+  },
+
+  componentDidUpdate: function() {
+    var el = this.getDOMNode();
+    d3Chart.update(el, this.getChartState());
+  },
+
+  getChartState: function() {
+    return {
+      data: this.props.data,
+      domain: this.props.domain
+    };
+  },
+
+  componentWillUnmount: function() {
+    var el = this.getDOMNode();
+    d3Chart.destroy(el);
+  },
+
+  render: function() {
+    return (
+      <div className="Chart"></div>
+    );
+  }
+});
+
+var sampleData = [
+  {id: '5fbmzmtc', x: 7, y: 41, z: 6},
+  {id: 's4f8phwm', x: 11, y: 45, z: 9},
+  // ...
+];
+
+var App = React.createClass({
+  getInitialState: function() {
+    return {
+      data: sampleData,
+      domain: {x: [0, 30], y: [0, 100]}
+    };
+  },
+
+  render: function() {
+    return (
+      <div className="App">
+        <Chart
+          data={this.state.data}
+          domain={this.state.domain} />
       </div>
     );
   }
 });
+
+React.renderComponent(App(), document.body);
