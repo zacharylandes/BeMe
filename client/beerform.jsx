@@ -48,11 +48,11 @@ ActivityForm = React.createClass({
         <div className="panel-body">
             <div>
               <input type="range"
-                   ref="pleasure" min ='1' max= '10' defaultvalue= '5'/>
+                   ref="pleasure" min ='1' max= '10' defaultvalue= '1'/>
             </div>
             <div >
               <input type="range"
-                   ref="achievement" min ='1' max= '10' defaultvalue= '5' />
+                   ref="achievement" min ='1' max= '10' defaultvalue= '1' />
             </div>
 
           <div className="form-group">
