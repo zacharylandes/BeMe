@@ -1,20 +1,19 @@
-Beers = new Meteor.Collection("Beers");
+Activities = new Meteor.Collection("Activities");
 
 Meteor.methods({
-  "insertBeer": function(pleasure,achievement, add,cat) {
+  "insertActivity": function(pleasure,achievement, add,cat) {
     pleasure = parseInt(pleasure);
     achievement = parseInt(achievement);
     cat = ['social','work', 'recreation', 'wellbeing', 'daily'];
-    add = {cat: parseInt(pleasure + achievement)};
+    add = {cat: cat, add: parseInt(pleasure)+parseInt(achievement)};
     check(pleasure, Number);
     check(achievement, Number);
     check(add, Object);
     check(cat, Array);
-
-    return Beers.insert({pleasure: pleasure, achievement:achievement, cat:cat, add: {cat: cat, pleasure: pleasure, achievement:achievement}});
+    return Activities.insert({pleasure: pleasure, achievement:achievement, cat:cat, add: {cat:cat, add: parseInt(pleasure)+parseInt(achievement)}});
   },
 
-  "removeBeer": function(id) {
+  "removeActivity": function(id) {
     check(id, String);
     return pleasure.remove(id); achievement.remove(id); add.remove(id), cat.remove(id)
   }

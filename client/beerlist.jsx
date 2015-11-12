@@ -1,9 +1,9 @@
 
-BeerList = React.createClass({
+ActivityList = React.createClass({
 
-    renderBeers() {
-    return this.props.data.map((beer) => {
-      return <BeerItem beer={beer} />;
+    renderActivities() {
+    return this.props.data.map((activity) => {
+      return <ActivityItem activity={activity} />;
     });
   },
 
@@ -17,7 +17,7 @@ BeerList = React.createClass({
         </div>
         <div className="panel-body">
           <ul>
-            {this.renderBeers()}
+            {this.renderActivities()}
           </ul>
         </div>
       </div>

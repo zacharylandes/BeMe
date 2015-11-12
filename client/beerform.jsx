@@ -1,13 +1,13 @@
-BeerForm = React.createClass({
+ActivityForm = React.createClass({
   handleChange: function(e) {
     e.preventDefault();
     var pleasure = ReactDOM.findDOMNode(this.refs.pleasure).value;
     var achievement = ReactDOM.findDOMNode(this.refs.achievement).value;
     var cat = ReactDOM.findDOMNode(this.refs.cats).value;
-    var add = {cat: cat, pleasure: pleasure, achievement:achievement};
+    var add = {cat: cat, add: parseInt(pleasure)+parseInt(achievement)};
 
 
-    Meteor.call("insertBeer", pleasure, achievement, cat, add, function(e, r) {
+    Meteor.call("insertActivity", pleasure, achievement, cat, add, function(e, r) {
       if (e) alert(e.reason)
     });
     console.log(pleasure)
@@ -20,7 +20,7 @@ BeerForm = React.createClass({
     return (
       <div className="panel panel-default">
         <div className="panel-heading">
-          <h3 className="panel-title">Beer Consumption</h3>
+          <h3 className="panel-title">Actividados</h3>
           <select ref = "cats">
             <option value="Social">Social</option>
             <option value="Work">Work</option>
