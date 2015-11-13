@@ -28,8 +28,10 @@ BarChart = React.createClass({
   updateChart: function(props) {
       var data = props.data;
 
+      console.log('data in  barchart', data)
 
-      var max = _.max(_.pluck(data, "qty"));
+
+      var max = _.max(_.pluck(data, "totalScore"));
       var yScale = d3.scale.linear()
         .domain([0,max])
         .range([0, props.height - 35]);
@@ -46,12 +48,13 @@ BarChart = React.createClass({
 
       var svg = d3.select("svg");
 
-      var circle = svg.selectAll("circle").data(data.sort
-        (function(a,b) { return +a.qty - +b.qty; }),
-        function(d) { return d.xLabel; })
-           circle.enter()
+      var circle = svg.selectAll("circle")
+        .data(data
+        .sort(function (a, b) { return a.totalScore - b.totalScore }))
+
+      circle.enter()
           .append("circle")
-          .attr("fill", (d) => color(d.qty));
+          .attr("fill", (d) => color(d.totalScore));
 
       // bars.transition()
       //   .duration(1000)
@@ -67,11 +70,11 @@ BarChart = React.createClass({
     circle.transition()
         .duration(1000)
            .attr("r", function(d, i) {
-            return props.height - yScale(d.qty) - 20;
+            return d.totalScore/2
           })
           .attr("cx", xScale.rangeBand())
           .attr("cy", function(d, i) {
-            return yScale(d.qty)
+            return yScale(d.totalScore)
           });
 
       circle.exit()
@@ -101,10 +104,10 @@ function getRandomColor(brightness){
         return xScale(i) + xScale.rangeBand()/2;
       })
       .attr("y", function(d, i) {
-        return props.height - yScale(d.qty) - 25
+        return props.height - yScale(d.totalScore) - 25
       })
       .text(function(d, i) {
-        return d.qty;
+        return d.cat;
       });
 
       var xLabel = svg.selectAll(".xLabel").data(data);

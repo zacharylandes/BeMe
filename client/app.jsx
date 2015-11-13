@@ -1,62 +1,37 @@
-
 App = React.createClass({
   mixins: [ReactMeteorData],
 
- getMeteorData() {
+  getMeteorData() {
       return {
         activites: Activities.find({}).fetch()
       }
-    },
+  },
 
-
-    mapData: function() {
-
-  sums = [[],[],[],[],[]];
-  sumies = [];
-  for(var i = 10;i<=35;i++){
-    var raw = Activities.find({}).fetch();
-    var score = raw[i].activity.score;
-    var cat =raw[i].activity.cat;
-    if(cat==="Social"){
-   sums[0].push(score);
+  reducer: function (key) {
+    return function (arr) {
+      return _.reduce(arr, (result, a) => {
+        result += a[key]
+        return result
+      }, 0)
     }
-    else if(cat==="Work"){
-   sums[1].push(score);
-    }
-    else if(cat==="Wellbeing"){
-   sums[2].push(score);
-    }
-   else if(cat==="Recreation"){
-   sums[3].push(score);
-    }
-    else{
-   sums[4].push(score);
-    }
-   }
+  },
 
-  for(var i in sums){
+  mapData: function () {
+    if (!this.data.activites)  { return [] }
+    return _.chain(this.data.activites)
+      .map(d => { return d.activity })
+      .groupBy(activity => { return activity.cat })
+      // .each(activity => { console.log(activity)})
+      .map((arr, cat) => {
 
-   sumies.push(_.reduce(sums[i], function(a,b){return a+b},0));
-  }
-    console.log(sumies)
-
-
-// console.log(Activities.find({}).count())
-// console.log(Activities.find({add:social}).fetch())
-
-      var data = [
-        { qty: sumies[0], xLabel: "Social" },
-        { qty: sumies[1], xLabel: "Work" },
-        { qty: sumies[2], xLabel: "Wellbeing" },
-        { qty: sumies[3], xLabel: "Recteation" },
-        { qty: sumies[4], xLabel: "Daily" },
-           ];
-         return data;
-    },
+        return { cat: cat, totalScore: this.reducer('score')(arr)  }
+      })
+      .value()
+  },
 
   render: function() {
 
-
+    console.log('data', this.data)
 
 
     return (
@@ -76,7 +51,7 @@ App = React.createClass({
               <ActivityList data={this.data.activites}/>
           </div>
           <div className="col-md-offset-2 col-md-6">
-            <BarChart data={this.mapData()} width="480" height="320"/>
+            <BarChart data={this.mapData()} width="1480" height="1320"/>
           </div>
 
           <div className="col-md-offset-2 col-md-6">
