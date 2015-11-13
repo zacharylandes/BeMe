@@ -31,7 +31,7 @@ BarChart = React.createClass({
 
       var max = _.max(_.pluck(data, "qty"));
       var yScale = d3.scale.linear()
-        .domain([max,0])
+        .domain([0,max])
         .range([0, props.height - 35]);
       // var color = d3.scale.linear()
       //               .domain([0,20])
@@ -46,10 +46,11 @@ BarChart = React.createClass({
 
       var svg = d3.select("svg");
 
-      var circle = svg.selectAll("circle").data(data);
-      circle.enter()
+      var circle = svg.selectAll("circle").data(data.sort
+        (function(a,b) { return +a.qty - +b.qty; }),
+        function(d) { return d.xLabel; })
+           circle.enter()
           .append("circle")
-          // .attr("fill", function(d){return color(d.qty)});
           .attr("fill", (d) => color(d.qty));
 
       // bars.transition()

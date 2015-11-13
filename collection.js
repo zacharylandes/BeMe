@@ -2,7 +2,7 @@ Activities = new Meteor.Collection("Activities");
 
 Meteor.methods({
   "insertActivity": function(activity) {
-
+    activity = activity;
     check(activity.name, String);
     check(activity.pleasure, Number);
     check(activity.achievement, Number);
