@@ -38,9 +38,9 @@ BarChart = React.createClass({
       // var color = d3.scale.linear()
       //               .domain([0,20])
       //               .range(['green','purple']);
-        var color = d3.scale.linear()
-                    .domain([0,60])
-                    .range([getRandomColor(3),getRandomColor(5)]);
+    var color = d3.scale.linear()
+                .domain([0,60])
+                .range([getRandomColor(3),getRandomColor(3)]);
 
       var xScale = d3.scale.ordinal()
         .domain(d3.range(data.length))
@@ -49,33 +49,32 @@ BarChart = React.createClass({
       var svg = d3.select("svg");
 
       var circle = svg.selectAll("circle")
-        .data(data
-        .sort(function (a, b) { return a.totalScore - b.totalScore }))
+        .data(data)
+       .sort(function (a, b) { return a.totalScore - b.totalScore });
+
 
       circle.enter()
           .append("circle")
-          .attr("fill", (d) => color(d.totalScore));
+          .attr("fill", (d) => color(d.totalScore))
+          .attr("r", function(d, i) {
+            return d.totalScore/2
+          })
+          .attr("cx",200)
+          .attr("cy", 200);
+
 
       // bars.transition()
       //   .duration(1000)
-      //   .attr("r", function(d, i) {
-      //       return xScale(i);
-      //     })
-      //     .attr("cx", xScale.rangeBand())
-      //     .attr("cy", function(d, i) {
-      //       return yScale(d.qty)
-      //     });
 
 
-    circle.transition()
-        .duration(1000)
-           .attr("r", function(d, i) {
-            return d.totalScore/2
-          })
-          .attr("cx", xScale.rangeBand())
-          .attr("cy", function(d, i) {
-            return yScale(d.totalScore)
-          });
+
+    // circle.transition()
+    //     .duration(1000)
+    //
+    //       .attr("cx", xScale.rangeBand())
+    //       .attr("cy", function(d, i) {
+    //         return yScale(d.totalScore)
+    //       });
 
       circle.exit()
           .remove();

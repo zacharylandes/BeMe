@@ -21,25 +21,20 @@ App = React.createClass({
     return _.chain(this.data.activites)
       .map(d => { return d.activity })
       .groupBy(activity => { return activity.cat })
-      // .each(activity => { console.log(activity)})
       .map((arr, cat) => {
-
         return { cat: cat, totalScore: this.reducer('score')(arr)  }
       })
       .value()
   },
 
   render: function() {
-
     console.log('data', this.data)
-
-
     return (
       <div>
         <div className="page-header">
           <center>
             <h1>
-            <img src = "noun_12489"/> Actividados
+            <img src = "./noun_12489"/> Actividados
       </h1>
           </center>
       </div>
