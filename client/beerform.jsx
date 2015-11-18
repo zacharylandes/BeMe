@@ -26,10 +26,10 @@ ActivityForm = React.createClass({
 
   render: function() {
     return (
-    <form className="form-horizontal" onSubmit={this.handleSubmit}>
-      <div className="panel panel-default">
-        <div className="panel-heading">
-          <h3 className="panel-title">Actividados</h3>
+    <form className="col s12"onSubmit={this.handleSubmit} >
+      <div >
+        <div >
+          <h3 >Actividados</h3>
           <select ref = "cats">
             <option value="Social">Social</option>
             <option value="Work">Work</option>
@@ -47,7 +47,7 @@ ActivityForm = React.createClass({
           </div>
         <div className="panel-body">
             <div>
-              <input type="range"
+              <input type="range" className="form-control"
                    ref="pleasure" min ='1' max= '10' defaultvalue= '1'/>
             </div>
             <div >

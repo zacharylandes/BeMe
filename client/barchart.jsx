@@ -32,15 +32,10 @@ BarChart = React.createClass({
 
 
       var max = _.max(_.pluck(data, "totalScore"));
-      var yScale = d3.scale.linear()
-        .domain([0,max])
-        .range([0, props.height - 35]);
-      // var color = d3.scale.linear()
-      //               .domain([0,20])
-      //               .range(['green','purple']);
-    var color = d3.scale.linear()
-                .domain([0,60])
-                .range([getRandomColor(3),getRandomColor(3)]);
+      console.log(max)
+        var color = d3.scale.linear()
+                    .domain([0,max])
+                    .range(['cyan','black']);
 
       var xScale = d3.scale.ordinal()
         .domain(d3.range(data.length))
@@ -50,7 +45,7 @@ BarChart = React.createClass({
 
       var circle = svg.selectAll("circle")
         .data(data)
-       .sort(function (a, b) { return a.totalScore - b.totalScore });
+      //  .sort(function (a, b) { return a.totalScore - b.totalScore })
 
 
       circle.enter()
@@ -60,7 +55,7 @@ BarChart = React.createClass({
             return d.totalScore/2
           })
           .attr("cx",200)
-          .attr("cy", 200);
+          .attr("cy", 200)
 
 
       // bars.transition()
@@ -89,42 +84,43 @@ function getRandomColor(brightness){
 
       circle.exit()
           .remove();
+        }
 
-      var qtyLabel = svg.selectAll(".qtyLabel").data(data);
-      qtyLabel.enter()
-          .append("text")
-          .attr("class", "qtyLabel")
-          .style("font-weight", "bold")
-          .attr("text-anchor", "middle")
+    //   var qtyLabel = svg.selectAll(".qtyLabel").data(data);
+    //   qtyLabel.enter()
+    //       .append("text")
+    //       .attr("class", "qtyLabel")
+    //       .style("font-weight", "bold")
+    //       .attr("text-anchor", "middle")
 
-      qtyLabel.transition()
-        .duration(1000)
-      .attr("x", function(d, i) {
-        return xScale(i) + xScale.rangeBand()/2;
-      })
-      .attr("y", function(d, i) {
-        return props.height - yScale(d.totalScore) - 25
-      })
-      .text(function(d, i) {
-        return d.cat;
-      });
+    //   qtyLabel.transition()
+    //     .duration(1000)
+    //   .attr("x", function(d, i) {
+    //     return xScale(i) + xScale.rangeBand()/2;
+    //   })
+    //   .attr("y", function(d, i) {
+    //     return props.height - yScale(d.totalScore) - 25
+    //   })
+    //   .text(function(d, i) {
+    //     return d.cat;
+    //   });
 
-      var xLabel = svg.selectAll(".xLabel").data(data);
-      xLabel.enter()
-          .append("text")
-          .attr("class", "xLabel")
+    //   var xLabel = svg.selectAll(".xLabel").data(data);
+    //   xLabel.enter()
+    //       .append("text")
+    //       .attr("class", "xLabel")
 
-      xLabel.text(function(d, i) {
-            return d.xLabel;
-          })
-          .attr("text-anchor", "middle")
-          .attr("x", function(d, i) {
-            return xScale(i) + xScale.rangeBand()/2;
-          })
-          .attr("y", function(d, i) {
-            return props.height - 5;
-          });
-    },
+    //   xLabel.text(function(d, i) {
+    //         return d.xLabel;
+    //       })
+    //       .attr("text-anchor", "middle")
+    //       .attr("x", function(d, i) {
+    //         return xScale(i) + xScale.rangeBand()/2;
+    //       })
+    //       .attr("y", function(d, i) {
+    //         return props.height - 5;
+    //       });
+    // },
 
 
 

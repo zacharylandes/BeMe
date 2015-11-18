@@ -1,3 +1,5 @@
+
+
 App = React.createClass({
   mixins: [ReactMeteorData],
 
@@ -20,40 +22,42 @@ App = React.createClass({
     if (!this.data.activites)  { return [] }
     return _.chain(this.data.activites)
       .map(d => { return d.activity })
-      .groupBy(activity => { return activity.cat })
+      .groupBy(activity => { return activity.cat})
       .map((arr, cat) => {
-        return { cat: cat, totalScore: this.reducer('score')(arr)  }
+        return { cat: cat, totalScore: this.reducer('score')(arr),
+         pleasure:this.reducer('pleasure')(arr),
+         achievement:this.reducer('achievement')(arr)  }
       })
       .value()
   },
 
   render: function() {
-    console.log('data', this.data)
+    console.log('app form data', this.data)
     return (
       <div>
         <div className="page-header">
-          <center>
-            <h1>
-            <img src = "./noun_12489"/> Actividados
-      </h1>
-          </center>
+            <nav>
+            <div className="nav-wrapper">
+            <a href="#" className="brand-logo">Logo</a>
+              <ul>
+                <li><a href="sass.html">Sass</a></li>
+                <li><a href="badges.html">Components</a></li>
+                <li><a href="collapsible.html">JavaScript</a></li>
+              </ul>
+            </div>
+          </nav>
       </div>
-
-      <div className="container">
+      <div className="container" style= {{width:'25%', float:'left', display:'inline-block'}}>
         <div className="row">
-          <div className="col-md-4">
             <ActivityForm />
               <ActivityList data={this.data.activites}/>
           </div>
-          <div className="col-md-offset-2 col-md-6">
+       </div>
+          <div className="card " style={{display:'inline-block'}}>
             <BarChart data={this.mapData()} width="1480" height="1320"/>
           </div>
+      </div>
 
-          <div className="col-md-offset-2 col-md-6">
-          </div>
-        </div>
-      </div>
-      </div>
     );
   }
 });

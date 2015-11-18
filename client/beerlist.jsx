@@ -3,21 +3,20 @@ ActivityList = React.createClass({
 
     renderActivities() {
     return this.props.data.map((activity) => {
-      return <ActivityItem activity={activity} />;
+      return <ul className= "collection-item">< ActivityItem activity={activity}/></ul>;
     });
   },
 
   render: function() {
     return (
-      <div className="panel panel-default">
-        <div className="panel-heading">
-          <h3 className="panel-title">History
-          <small> click to remove</small>
+      <div className="collection">
+        <div >
+          <h3 >Los Actividados
           </h3>
         </div>
-        <div className="panel-body">
+        <div >
           <ul>
-            {this.renderActivities()}
+          {this.renderActivities()}
           </ul>
         </div>
       </div>
