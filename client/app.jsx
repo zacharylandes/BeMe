@@ -30,9 +30,9 @@ App = React.createClass({
       })
       .value()
   },
-
   render: function() {
     console.log('app form data', this.data)
+
     return (
       <div>
         <div className="page-header">
@@ -47,14 +47,14 @@ App = React.createClass({
             </div>
           </nav>
       </div>
-      <div className="container" style= {{width:'25%', float:'left', display:'inline-block'}}>
+      <div className="container" style= {{width:'25%', float:'left', display:'inline-block', fontfamily: 'Cursive'}}>
         <div className="row">
-            <ActivityForm />
-              <ActivityList data={this.data.activites}/>
+            <ActivityForm  style={{display:'inline-block'}}/>
+              <ActivityList data={this.data.activites} style={{display:'inline-block'}}/>
           </div>
        </div>
           <div className="card " style={{display:'inline-block'}}>
-            <BarChart data={this.mapData()} width="1480" height="1320"/>
+            <BarChart data={this.mapData()} width="800" height="800"/>
           </div>
       </div>
 
