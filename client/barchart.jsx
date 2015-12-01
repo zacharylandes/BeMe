@@ -28,8 +28,9 @@ BarChart = React.createClass({
         );
   },
   updateChart: function(props) {
-
-      var data = props.data;
+  var data = props.data;
+   data = data.sort(function(a,b) {
+  return(b.totalScore - a.totalScore)});
 
       console.log('data in  barchart', data)
 
@@ -37,14 +38,15 @@ BarChart = React.createClass({
       var max = _.max(_.pluck(data, "totalScore"));
 
 
-        var color = d3.scale.linear()
-                    .domain([0,max])
-                    .range([getRandomColor(1),getRandomColor(5)]);
+      //   var color = d3.scale.linear()
+      //               .domain([0,4])
+      //               .range([getRandomColor(1),getRandomColor(5)]);
 
-      var xScale = d3.scale.ordinal()
-        .domain(d3.range(data.length))
-        .rangeRoundBands([0, props.width], 0.05);
-        var svg = d3.select("svg");
+      // var xScale = d3.scale.ordinal()
+      //   .domain(d3.range(data.length))
+      //   .rangeRoundBands([0, props.width], 0.05);
+      d3.selectAll("svg > *").remove();
+      var svg = d3.select("svg");
 
       var circle = svg.selectAll("circle")
         .data(data)
@@ -53,26 +55,45 @@ BarChart = React.createClass({
 
       circle.enter()
           .append("circle")
-          .attr("fill", (d) => color(d.totalScore))
+          .style("fill", function(d,i) {
+                    for (var i in data){
+                      data[i] = getRandomColor(2)
+                     return data[i]}
+                          })
           .attr("r", function(d,i) {
-            return d.totalScore
+            console.log(d,i)
+            return 100/(i+1)
+
           })
-          .attr("cx",200)
-          .attr("cy", 200)
+          .attr("cx",100)
+          .attr("cy", 100)
 
 
       // bars.transition()
       //   .duration(1000)
 
 
+ var text = svg.selectAll("text")
+                       .data(data)
+                       .enter()
+                        .append("text");
 
-    // circle.transition()
-    //     .duration(1000)
-    //
-    //       .attr("cx", xScale.rangeBand())
-    //       .attr("cy", function(d, i) {
-    //         return yScale(d.totalScore)
-    //       });
+//Add SVG Text Element Attributes
+var textLabels = text
+                 .attr("x", function(d,i) { return (i+1)*70 })
+                 .attr("y", function(d,i) { return (i+1)*80 })
+                 .text( function (d) { return d.cat; })
+                 .attr("font-family", "sans-serif")
+                 .attr("font-size", "20px")
+                 .attr("fill", "black");
+
+
+
+    circle.transition()
+        .duration(1000)
+
+          .attr("cx", 200)
+          .attr("cy", 200);
 
       circle.exit()
           .remove();
@@ -85,46 +106,6 @@ function getRandomColor(brightness){
   }
 
 
-      circle.exit()
-          .remove();
-        }
 
-    //   var qtyLabel = svg.selectAll(".qtyLabel").data(data);
-    //   qtyLabel.enter()
-    //       .append("text")
-    //       .attr("class", "qtyLabel")
-    //       .style("font-weight", "bold")
-    //       .attr("text-anchor", "middle")
-
-    //   qtyLabel.transition()
-    //     .duration(1000)
-    //   .attr("x", function(d, i) {
-    //     return xScale(i) + xScale.rangeBand()/2;
-    //   })
-    //   .attr("y", function(d, i) {
-    //     return props.height - yScale(d.totalScore) - 25
-    //   })
-    //   .text(function(d, i) {
-    //     return d.cat;
-    //   });
-
-    //   var xLabel = svg.selectAll(".xLabel").data(data);
-    //   xLabel.enter()
-    //       .append("text")
-    //       .attr("class", "xLabel")
-
-    //   xLabel.text(function(d, i) {
-    //         return d.xLabel;
-    //       })
-    //       .attr("text-anchor", "middle")
-    //       .attr("x", function(d, i) {
-    //         return xScale(i) + xScale.rangeBand()/2;
-    //       })
-    //       .attr("y", function(d, i) {
-    //         return props.height - 5;
-    //       });
-    // },
-
-
-
+}
 });
