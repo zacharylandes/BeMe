@@ -54,7 +54,7 @@ App = React.createClass({
           </div>
        </div>
           <div className="card " style={{display:'inline-block'}}>
-            <BarChart data={this.mapData()} width="300" height="300"/>
+            <BarChart data={this.mapData()} width="500" height="500"/>
           </div>
       </div>
 
