@@ -48,9 +48,11 @@ BarChart = React.createClass({
       circle.enter()
           .append("circle")
           .style("fill", function(d,i) {
-                    for (var i in data){
-                      data[i] = getRandomColor(2)
-                     return data[i]}
+                      if(i===0){return "rgb(42,57,61)"}
+                      else if(i===1){return "rgb(124,90,51)"}
+                      else if(i===2){return "rgb(110,118,101)"}
+                      else if(i===3){return "rgb(52,61,36)"}
+                      else {return "rgb(37,107,142)"}
                           })
           .attr("r", function(d,i) {
             console.log(d,i)
@@ -67,7 +69,7 @@ BarChart = React.createClass({
 
 var textLabels = text
                  .attr("x", function(d,i) { return (i+1)*50 })
-                 .attr("y", function(d,i) { return (i+1)*40 })
+                 .attr("y", function(d,i) { return (i+1)*50 })
                  .text( function (d) { return d.cat; })
                  .attr("font-family", "Fugaz One")
                  .attr("font-size", "20px")
