@@ -27,12 +27,13 @@ ActivityForm = React.createClass({
   },
 
   render: function() {
+
     return (
     <form className="col s12"onSubmit={this.handleSubmit} >
-      <div >
+      <div className="sidenav">
         <div >
           <h3 >Actividados</h3>
-          <select ref = "cats">
+          <select className = "styled-select" ref = "cats">
             <option value="Social">Social</option>
             <option value="Work">Work</option>
             <option value="Recreation">Recreation</option>
@@ -59,9 +60,10 @@ ActivityForm = React.createClass({
                    ref="achievement" min ='1' max= '10' defaultvalue= '1' />
             </div>
 
-          <div className="form-group">
+          <div className="btn-group">
+
             <div className="col-sm-10">
-              <button type="submit" className="btn btn-primary btn-block">Add</button>
+              <button type="submit" className="btn btn-primary btn-block" >Add</button>
             </div>
           </div>
 
@@ -69,7 +71,6 @@ ActivityForm = React.createClass({
 
         </div>
       </div>
-      <i class="fa fa-battery-empty"></i>
     </form>
     );
   }

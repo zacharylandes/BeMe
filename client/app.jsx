@@ -33,17 +33,12 @@ App = React.createClass({
   render: function() {
     console.log('app form data', this.data)
 
+
     return (
       <div>
         <div className="page-header">
             <nav>
             <div className="nav-wrapper">
-            <a href="#" className="brand-logo">Logo</a>
-              <ul>
-                <li><a href="sass.html">Sass</a></li>
-                <li><a href="badges.html">Components</a></li>
-                <li><a href="collapsible.html">JavaScript</a></li>
-              </ul>
             </div>
           </nav>
       </div>
