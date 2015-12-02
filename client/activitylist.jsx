@@ -2,7 +2,8 @@ ActivityList = React.createClass({
 
     renderActivities() {
     return this.props.data.map((activity) => {
-      return <ul className= "collection-item">< ActivityItem activity={activity}/></ul>;
+      return <ul className= "collection-item">< ActivityItem activity={activity}/></ul>
+
     });
   },
 
