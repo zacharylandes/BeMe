@@ -44,26 +44,26 @@ ActivityForm = React.createClass({
             <div className="panel-body">
                   <div className="form-group">
             <div className="col-sm-10">
-              <input type="text" className="form-control"
+              <input type="text" className="form-control" id="input"
                   placeholder="Enterle los actividados" ref="name" />
             </div>
           </div>
         <div className="panel-body">
             <div>
             <label>Pleasure Score</label>
-              <input type="range"
+              <input type="range" className="range"
                    ref="pleasure" min ='1' max= '10' defaultvalue= '1'/>
             </div>
             <div >
             <label>Achievement Score</label>
-              <input type="range"
+              <input type="range" className="range"
                    ref="achievement" min ='1' max= '10' defaultvalue= '1' />
             </div>
 
           <div className="btn-group">
 
-            <div className="col-sm-10">
-              <button type="submit" className="btn btn-primary btn-block" >Add</button>
+            <div className="btn">
+              <button type="submit" className= "add">Add</button>
             </div>
           </div>
 

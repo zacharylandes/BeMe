@@ -19,6 +19,7 @@ App = React.createClass({
   mapData: function () {
     if (!this.data.activites)  { return [] };
 
+
     return _.chain(this.data.activites)
       .map(d => { return d.activity })
       .groupBy(activity => { return activity.cat})
@@ -26,7 +27,8 @@ App = React.createClass({
         console.log(this.reducer('score')(arr))
         return { cat: cat, totalScore: this.reducer('score')(arr),
          pleasure:this.reducer('pleasure')(arr),
-         achievement:this.reducer('achievement')(arr)  }
+         achievement:this.reducer('achievement')(arr)
+     }
       })
       .value()
   },
@@ -36,20 +38,24 @@ App = React.createClass({
 
     return (
       <div>
-        <div className="page-header">
-            <nav>
+        <div className="p-header" >
             <div className="nav-wrapper">
+            <h1>BALANCE</h1>
+              <div id="puzzle"><img src="http://www.clker.com/cliparts/F/N/l/r/i/v/scale.svg"/>
+              </div>
             </div>
-          </nav>
-      </div>
-      <div className="container" style= {{width:'25%', float:'left', display:'inline-block', fontfamily: 'Cursive'}}>
+        </div>
+      <div className="container" style= {{width:'25%', float:'left', display:'inline-block'}}>
         <div className="row">
             <ActivityForm  style={{display:'inline-block'}}/>
               <ActivityList data={this.data.activites} style={{display:'inline-block'}}/>
           </div>
        </div>
-          <div className="card " style={{display:'inline-block'}}>
-            <BarChart data={this.mapData()} width="500" height="500"/>
+          <div className="paper">
+            <CircleChart data={this.mapData()} width="500" height="500"/>
+          </div>
+          <div className="bargraph">
+            <BarsChart data={this.mapData()} width="500" height="500"/>
           </div>
       </div>
 

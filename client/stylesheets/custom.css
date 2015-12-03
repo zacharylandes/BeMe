@@ -1,48 +1,67 @@
-body{
+*{
   background-color:#7a7c33;
-  font-family: "Fugaz One"
-
-}
-select{
-  background-color: 'black';
-}
-.sidenav{
-width: 100%;
-height: 100%;
-
-}
-.collection{
-  width: 100%;
-height: 100%;
-
+  font-family: "Fugaz One";
+  color: #393d42;
+  text-align: center;
 }
 
-svg{
-   width: 100%;
-height: 100%;
-
-}
-.page-header{
-    width: 100%;
-height: 100%;
-color:black;
-}
-
-.styled-select select {
-   background: transparent;
-   width: 268px;
-   padding: 5px;
-   font-size: 16px;
-   line-height: 1;
-   border: 0;
-   border-radius: 0;
-   height: 34px;
-   -webkit-appearance: none;
-   }
-   .styled-select {
-   width: 240px;
-   height: 34px;
+.styled-select {
+   border: none;
    overflow: hidden;
-   background: url(new_arrow.png) no-repeat right #ddd;
-   border: 1px solid #ccc;
-   }
+   background: #7c5a33;
+   font-family: 'Fugaz one';
+   border: none;
+   width: 24%;
+   margin:0% 37%;
+   border-radius: 700;
+}
+
+.form-control, .add, .range {
+  background-color: #7c5a33;
+  border: none;
+  width:100%;
+  border-radius: 700px;
+  background: #7c5a33;
+}
+
+.fa-balance-scale {
+  width: 200px;
+  height: 200px;
+}
+#input{
+  margin:0% 10%;
+}
+
+.add{
+  width: 50%;
+}
+
+.p-header, .nav-wrapper{
+  height: 100%;
+  background-color: #7c5a33;
+  width: 100%;
+  padding: 1%;
+}
+
+.paper{
+  margin-left: -20%;
+  display: inline-block;
+}
+.row{
+  margin-right: none;
+}
+.btn{
+  width:100%;
+}
+
+img, #puzzle{
+  width: 100px;
+  height: 100px;
+  background-color: #7c5a33;
+}
+h1{
+  background-color: #7c5a33;
+  font-size: 3em;
+  font-family: "Fugaz One";
+
+}

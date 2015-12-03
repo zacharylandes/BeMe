@@ -7,12 +7,11 @@ ActivityItem = React.createClass({
     var score = this.props.activity.activity.score
 
     return (
-      <div>
-     <li>{act}</li>
-     <li>{cat}</li>
-     <li>{score}</li>
-
-      </div>
+    <div>
+     <ul>
+       <li>{act} {cat} {score}</li>
+     </ul>
+    </div>
 
     );
   }
