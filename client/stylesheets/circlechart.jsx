@@ -112,8 +112,8 @@ CircleChart = React.createClass({
           else if(i===1){return 130}
           else {return 160}
         })
-     .attr("cx", function(d,i){return ((i-i+.49)*300)})
-     .attr("cy", function(d,i){return (300)});
+     .attr("cx", function(d,i){return ((i-(i*.83))*100)+300})
+     .attr("cy", function(d,i){return ((i-(i*.83))*100)+300});
     circle.exit()
         .remove();
 

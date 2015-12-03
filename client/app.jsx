@@ -40,8 +40,8 @@ App = React.createClass({
       <div>
         <div className="p-header" >
             <div className="nav-wrapper">
-
-            <h1> <img src="http://www.clker.com/cliparts/F/N/l/r/i/v/scale.svg"/> Balance <img src="http://www.clker.com/cliparts/F/N/l/r/i/v/scale.svg"/> </h1>
+            <h1>
+           <span id="line"></span> <img src="http://www.clker.com/cliparts/F/N/l/r/i/v/scale.svg"/> Balance <img src="http://www.clker.com/cliparts/F/N/l/r/i/v/scale.svg"/> </h1>
 
             </div>
         </div>
