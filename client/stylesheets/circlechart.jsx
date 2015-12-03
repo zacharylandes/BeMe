@@ -26,7 +26,17 @@ CircleChart = React.createClass({
       data = data.sort(function(a,b) {
       return(a.totalScore - b.totalScore)
       });
+   var t_achievement=0;
+   var t_pleasure=0;
+   var balance= 0;
+   for (var i=0;i<=4;i++){
+   t_achievement+=data[i].achievement;
+   t_pleasure+=data[i].pleasure;
+   balance=(t_pleasure/t_achievement);
+    }
+  console.log(data,t_achievement,t_pleasure,  balance)
       console.log('data in  circlechart', data)
+      d3.selectAll("svg > *").remove();
   var svg = d3.select("svg");
   var text = svg.selectAll("text")
      .data(data)
@@ -80,17 +90,17 @@ CircleChart = React.createClass({
               else if(i===3){ return 200 }
               else { return 250 }
                   });
-      circle.transition()
-       .duration(1000)
-       .attr("r", function(d,i) {
-              if(i===0){ return 100 }
-              else if(i===1){ return 200 }
-              else if(i===2){ return 300 }
-              else if(i===3){ return 400 }
-              else { return 500 }
-            })
-       .attr("cx", 400)
-       .attr("cy", 400);
+      // circle.transition()
+      //  .duration(1000)
+      //  .attr("r", function(d,i) {
+      //         if(i===0){ return 100 }
+      //         else if(i===1){ return 200 }
+      //         else if(i===2){ return 300 }
+      //         else if(i===3){ return 400 }
+      //         else { return 500 }
+      //       })
+      //  .attr("cx", 400)
+      //  .attr("cy", 400);
 
   circle.transition()
      .duration(2000)
@@ -102,8 +112,8 @@ CircleChart = React.createClass({
           else if(i===1){return 130}
           else {return 160}
         })
-     .attr("cx", 300)
-     .attr("cy", 200);
+     .attr("cx", function(d,i){return ((i-i+.49)*300)})
+     .attr("cy", function(d,i){return (300)});
     circle.exit()
         .remove();
 

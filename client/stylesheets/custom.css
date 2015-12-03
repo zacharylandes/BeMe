@@ -16,7 +16,7 @@
    border-radius: 700;
 }
 
-.form-control, .add, .range {
+.form-control, .range {
   background-color: #7c5a33;
   border: none;
   width:100%;
@@ -31,37 +31,47 @@
 #input{
   margin:0% 10%;
 }
-
 .add{
-  width: 50%;
+  width: 150px;
+  border-radius: 300px;
+  background-color: #7c5a33;
+  border: none;
 }
 
-.p-header, .nav-wrapper{
-  height: 100%;
+
+.p-header{
+  height: 10%;
   background-color: #7c5a33;
   width: 100%;
-  padding: 1%;
-}
+  margin:0;
+  padding: 0;
 
+}
+span{
+  background-color: #7c5a33;
+}
 .paper{
   margin-left: -20%;
   display: inline-block;
 }
 .row{
-  margin-right: none;
+  padding: 5%;
+
 }
 .btn{
   width:100%;
 }
 
-img, #puzzle{
-  width: 100px;
-  height: 100px;
+img{
+  width: 40px;
+  height: 40px;
   background-color: #7c5a33;
 }
 h1{
   background-color: #7c5a33;
   font-size: 3em;
   font-family: "Fugaz One";
+  margin: 0;
+  padding: 0;
 
 }

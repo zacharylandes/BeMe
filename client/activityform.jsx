@@ -62,7 +62,7 @@ ActivityForm = React.createClass({
 
           <div className="btn-group">
 
-            <div className="btn">
+            <div >
               <button type="submit" className= "add">Add</button>
             </div>
           </div>
