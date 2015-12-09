@@ -52,7 +52,7 @@ App = React.createClass({
           </div>
        </div>
           <div className="paper">
-            <CircleChart data={this.mapData()} width="500" height="500"/>
+            <CircleChart data={this.mapData()} width="800" height="800"/>
           </div>
 
       </div>

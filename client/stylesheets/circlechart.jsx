@@ -24,16 +24,17 @@ CircleChart = React.createClass({
   updateChart: function(props) {
    var data = props.data;
       data = data.sort(function(a,b) {
-      return(a.totalScore - b.totalScore)
+      return(b.totalScore - a.totalScore)
       });
-   var t_achievement=0;
-   var t_pleasure=0;
+   for (var i= 0;i<=4;i++){
+
+   var t_achievement= 0;
+   var t_pleasure= 0;
    var balance= 0;
-   for (var i=0;i<=4;i++){
-   t_achievement+=data[i].achievement;
-   t_pleasure+=data[i].pleasure;
-   balance=(t_pleasure/t_achievement);
-    }
+   t_achievement += data[i].achievement;
+   t_pleasure += data[i].pleasure;
+   balance=(t_pleasure/t_achievement);}
+
   console.log(data,t_achievement,t_pleasure,  balance)
       console.log('data in  circlechart', data)
       d3.selectAll("svg > *").remove();
@@ -43,9 +44,13 @@ CircleChart = React.createClass({
      .enter()
      .append("text");
 
+  var scale = d3.scale.linear()
+                    .domain([0,data[4].totalScore])
+                    .range([0,300]);
+
   var textLabels = text
-     .attr("x", 100)
-     .attr("y", 100)
+     .attr("x", 200)
+     .attr("y", 200)
      .text( function (d) { return d.cat; })
      .attr("font-family", "Fugaz One")
      .attr("font-size", "20px")
@@ -82,7 +87,7 @@ CircleChart = React.createClass({
 
       textLabels.transition()
          .duration(3000)
-          .attr("x", 0)
+          .attr("x", 200)
           .attr("y", function(d,i) {
               if(i===0){ return 50 }
               else if(i===1){ return 100 }
@@ -104,16 +109,10 @@ CircleChart = React.createClass({
 
   circle.transition()
      .duration(2000)
-     .attr("r", function(d,i) {
-          console.log(d,i)
-          if(i===4){return 40}
-          else if(i===3){return 70}
-          else if(i===2){return 100}
-          else if(i===1){return 130}
-          else {return 160}
+     .attr("r", function(d,i) {return scale(d.totalScore/7)
         })
-     .attr("cx", function(d,i){return ((i-(i*.83))*100)+300})
-     .attr("cy", function(d,i){return ((i-(i*.83))*100)+300});
+     .attr("cx", function(d,i){return ((i-(i*balance))*100)+400})
+     .attr("cy", function(d,i){return ((i-(i*.balance))*100)+400});
     circle.exit()
         .remove();
 
