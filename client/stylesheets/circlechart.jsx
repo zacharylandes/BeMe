@@ -1,4 +1,5 @@
 CircleChart = React.createClass({
+  //prepping svg
   componentDidMount: function() {
       var el = ReactDOM.findDOMNode(this);
       var svg = d3.select(el)
@@ -16,22 +17,28 @@ CircleChart = React.createClass({
           <div className="circle"></div>
         );
   },
-  updateChart: function(props,radius) {
+  //getting balance variable which is the ratio of pleasure to achievement
+  // getBalance: function(){
+  // var data = props.data;
+
+  //   return balance;
+  // },
+  //drawing circles
+  updateChart: function(props) {
    var data = props.data;
+      for (var i= 0;i<=4;i++){
+     var t_achievement= 0;
+     var t_pleasure= 0;
+     var balance = 0;
+     t_achievement += data[i].achievement;
+     t_pleasure += data[i].pleasure;
+     balance = (t_pleasure/t_achievement);
+   }
+  //ordering values to avoid overlapping circles
        data = data.sort(function(a,b) {
       return(b.totalScore - a.totalScore)
       });
-   for (var i= 0;i<=4;i++){
-    data[i].achievement = 0;
-    data[i].pleasure=0;
-   var t_achievement= 0;
-   var t_pleasure= 0;
-   var balance = 0;
-   t_achievement += data[i].achievement;
-   t_pleasure += data[i].pleasure;
-   balance =(t_pleasure/t_achievement);}
 
-  console.log(data,t_achievement,t_pleasure,  balance)
       console.log('data in  circlechart', data)
       d3.selectAll("svg > *").remove();
   var svg = d3.select("svg");
@@ -41,8 +48,8 @@ CircleChart = React.createClass({
      .append("text");
 
   var scale = d3.scale.linear()
-        .domain([0,data[4].totalScore])
-        .range([0,100]);
+      .domain([0,300])
+      .range([0,100]);
 
   var circle = svg.selectAll("circle")
         .data(data);
@@ -54,10 +61,10 @@ CircleChart = React.createClass({
           else if(d.cat==='Wellbeing'){return 'rgb(124,53,51)'}
           else if(d.cat==='Daily'){return "rgb(52,61,36)"}
           else {return "rgb(37,107,142)"}
-  })
-     .attr("r", function(d,i) {return scale(d.totalScore/15)})
-     .attr("cx", function(d,i){return ((i-(i*balance))*100)+500})
-     .attr("cy", function(d,i){return ((i-(i*balance))*100)+400});
+          })
+     .attr("r", function(d,i) {return scale(d.totalScore/2)})
+     .attr("cx", function(d,i){return ((i-(i*.86))*100)+500})
+     .attr("cy", function(d,i){return ((i-(i*.86))*100)+400});
 
 
 
@@ -81,9 +88,9 @@ CircleChart = React.createClass({
 
   circle.transition()
      .duration(2000)
-     .attr("r", function(d,i) {return scale(d.totalScore/7)})
-     .attr("cx", function(d,i){return ((i-(i*balance))*100)+500})
-     .attr("cy", function(d,i){return ((i-(i*balance))*100)+400});
+     .attr("r", function(d,i) {return scale(d.totalScore)})
+     .attr("cx", function(d,i){return ((i-(i*.56))*100)+500})
+     .attr("cy", function(d,i){return ((i-(i*.56))*100)+400});
     circle.exit()
         .remove();
 
