@@ -42,8 +42,14 @@ App = React.createClass({
             <div className="nav-wrapper">
             <h1>
            <span id="line"></span> <img src="http://www.clker.com/cliparts/F/N/l/r/i/v/scale.svg"/> Balance <img src="http://www.clker.com/cliparts/F/N/l/r/i/v/scale.svg"/> </h1>
-
             </div>
+        </div>
+        <div id = "labels">
+          <p style = {{color:"rgb(42,57,61)"}}>Social</p>
+          <p style = {{color:"rgb(124,90,51)"}}>Recreation</p>
+          <p style = {{color:"rgb(124,53,51)"}}>Wellbeing</p>
+          <p style = {{color:"rgb(52,61,36)"}}>Daily</p>
+          <p style = {{color:"rgb(37,107,142)"}}>Work</p>
         </div>
       <div className="container" style= {{width:'25%', float:'left', display:'inline-block'}}>
         <div className="row">

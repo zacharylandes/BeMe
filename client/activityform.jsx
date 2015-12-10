@@ -1,13 +1,11 @@
 ActivityForm = React.createClass({
 
-
-
-
   handleSubmit: function(e){
     e.preventDefault();
-    // var totes = 0;
-    var pleasure = parseInt(ReactDOM.findDOMNode(this.refs.pleasure).value);
-    var achievement = parseInt(ReactDOM.findDOMNode(this.refs.achievement).value);
+    var pleasure = 0;
+    var achievement = 0;
+    pleasure = parseInt(ReactDOM.findDOMNode(this.refs.pleasure).value);
+    achievement = parseInt(ReactDOM.findDOMNode(this.refs.achievement).value);
     var cat = ReactDOM.findDOMNode(this.refs.cats).value;
     var name = ReactDOM.findDOMNode(this.refs.name).value;
     var score = pleasure +achievement;

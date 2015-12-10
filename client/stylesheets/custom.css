@@ -50,9 +50,13 @@
 .paper{
   margin-left: -20%;
   display: inline-block;
+  position: relative;
+  z-index: -1
 }
 .row{
   padding: 5%;
+  position: relative;
+  z-index: 1;
 
 }
 .btn{
@@ -75,4 +79,12 @@ line{
   width: 200px;
   height: 20px;
   background-color:  #7c5a33;
+}
+#labels{
+padding: 5%;
+font-size: 30px;
+font-family: "Fugaz One";
+float: right;
+position: relative;
+z-index: 1;
 }
