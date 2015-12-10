@@ -1,4 +1,5 @@
 App = React.createClass({
+  //tying React with Meteor
   mixins: [ReactMeteorData],
 
   getMeteorData() {
@@ -15,29 +16,25 @@ App = React.createClass({
       }, 0)
     }
   },
-
+//mapping pleasure and activity scores to the correct categories
   mapData: function () {
     if (!this.data.activites)  { return [] };
-
-
     return _.chain(this.data.activites)
       .map(d => { return d.activity })
       .groupBy(activity => { return activity.cat})
       .map((arr, cat) => {
-        console.log(this.reducer('score')(arr))
-        return { cat: cat, totalScore: this.reducer('score')(arr),
-         pleasure:this.reducer('pleasure')(arr),
-         achievement:this.reducer('achievement')(arr)
-     }
-      })
+         return { cat: cat, totalScore: this.reducer('score')(arr),
+           pleasure:this.reducer('pleasure')(arr),
+           achievement:this.reducer('achievement')(arr)
+                }
+    })
       .value()
   },
+  //rendering page
   render: function() {
     console.log('app form data', this.data)
-
-
     return (
-      <div>
+    <div>
         <div className="p-header" >
             <div className="nav-wrapper">
             <h1>
@@ -55,13 +52,12 @@ App = React.createClass({
         <div className="row">
             <ActivityForm  style={{display:'inline-block'}}/>
               <ActivityList data={this.data.activites} style={{display:'inline-block'}}/>
-          </div>
-       </div>
-          <div className="paper">
-            <CircleChart data={this.mapData()} width="800" height="800"/>
-          </div>
-
+        </div>
       </div>
+        <div className="paper">
+          <CircleChart data={this.mapData()} width="800" height="800"/>
+        </div>
+    </div>
 
     );
   }

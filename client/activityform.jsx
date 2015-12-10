@@ -1,11 +1,9 @@
 ActivityForm = React.createClass({
-
+  //retrieve values from input
   handleSubmit: function(e){
     e.preventDefault();
-    var pleasure = 0;
-    var achievement = 0;
-    pleasure = parseInt(ReactDOM.findDOMNode(this.refs.pleasure).value);
-    achievement = parseInt(ReactDOM.findDOMNode(this.refs.achievement).value);
+    var pleasure = parseInt(ReactDOM.findDOMNode(this.refs.pleasure).value);
+    var achievement = parseInt(ReactDOM.findDOMNode(this.refs.achievement).value);
     var cat = ReactDOM.findDOMNode(this.refs.cats).value;
     var name = ReactDOM.findDOMNode(this.refs.name).value;
     var score = pleasure +achievement;
@@ -17,13 +15,13 @@ ActivityForm = React.createClass({
       cat:cat,
       name: name
     }
-
+  //save values to DB
     Meteor.call("insertActivity", activity, function(e, r) {
       if (e) alert(e.reason)
     });
     console.log(activity)
   },
-
+  //render activity form
   render: function() {
 
     return (
