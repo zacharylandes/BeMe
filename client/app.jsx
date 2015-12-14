@@ -51,6 +51,13 @@ App = React.createClass({
               <ActivityList data={this.data.activites} style={{display:'inline-block'}}/>
           </div>
        </div>
+        <div id = "labels">
+          <p style = {{color:"rgb(42,57,61)"}}>Social</p>
+          <p style = {{color:"rgb(124,90,51)"}}>Recreation</p>
+          <p style = {{color:"rgb(124,53,51)"}}>Wellbeing</p>
+          <p style = {{color:"rgb(52,61,36)"}}>Daily</p>
+          <p style = {{color:"rgb(37,107,142)"}}>Work</p>
+        </div>
           <div className="paper">
             <CircleChart data={this.mapData()} width="500" height="500"/>
           </div>

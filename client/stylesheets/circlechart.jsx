@@ -38,24 +38,9 @@ CircleChart = React.createClass({
       console.log('data in  circlechart', data)
       d3.selectAll("svg > *").remove();
   var svg = d3.select("svg");
-  var text = svg.selectAll("text")
-     .data(data)
-     .enter()
-     .append("text");
 
-  var textLabels = text
-     .attr("x", 100)
-     .attr("y", 100)
-     .text( function (d) { return d.cat; })
-     .attr("font-family", "Fugaz One")
-     .attr("font-size", "20px")
-     .attr("fill",function(d,i) {
-        if(d.cat==='Social'){return "rgb(42,57,61)"}
-        else if(d.cat==='Recreation'){return "rgb(124,90,51)"}
-        else if(d.cat==='Wellbeing'){return "rgb(124,53,51)"}
-        else if(d.cat==='Daily'){return "rgb(52,61,36)"}
-        else {return "rgb(37,107,142)"}
-      });
+
+
   var circle = svg.selectAll("circle")
         .data(data);
   circle.enter()
@@ -80,16 +65,7 @@ CircleChart = React.createClass({
     })
     .attr("cy", 100);
 
-      textLabels.transition()
-         .duration(3000)
-          .attr("x", 0)
-          .attr("y", function(d,i) {
-              if(i===0){ return 50 }
-              else if(i===1){ return 100 }
-              else if(i===2){ return 150 }
-              else if(i===3){ return 200 }
-              else { return 250 }
-                  });
+
       // circle.transition()
       //  .duration(1000)
       //  .attr("r", function(d,i) {

@@ -76,3 +76,11 @@ line{
   height: 20px;
   background-color:  #7c5a33;
 }
+#labels{
+padding: 5%;
+font-size: 30px;
+font-family: "Fugaz One";
+float: right;
+position: relative;
+z-index: 1;
+}
