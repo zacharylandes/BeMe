@@ -10,12 +10,6 @@ CircleChart = React.createClass({
   componentWillUpdate: function(nextProps) {
       this.updateChart(nextProps);
   },
-  // getDefaultProps: function() {
-  //     return {
-  //       width: 940,
-  //       height: 880
-  //     }
-  // },
   render: function() {
         return (
           <div className="circle"></div>
@@ -36,10 +30,8 @@ CircleChart = React.createClass({
     }
   console.log(data,t_achievement,t_pleasure,  balance)
       console.log('data in  circlechart', data)
-      d3.selectAll("svg > *").remove();
+      // d3.selectAll("svg > *").remove();
   var svg = d3.select("svg");
-
-
 
   var circle = svg.selectAll("circle")
         .data(data);
@@ -64,19 +56,6 @@ CircleChart = React.createClass({
       return 10/(i+1)*20
     })
     .attr("cy", 100);
-
-
-      // circle.transition()
-      //  .duration(1000)
-      //  .attr("r", function(d,i) {
-      //         if(i===0){ return 100 }
-      //         else if(i===1){ return 200 }
-      //         else if(i===2){ return 300 }
-      //         else if(i===3){ return 400 }
-      //         else { return 500 }
-      //       })
-      //  .attr("cx", 400)
-      //  .attr("cy", 400);
 
   circle.transition()
      .duration(2000)

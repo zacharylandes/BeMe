@@ -10,8 +10,7 @@ ActivityForm = React.createClass({
     var achievement = parseInt(ReactDOM.findDOMNode(this.refs.achievement).value);
     var cat = ReactDOM.findDOMNode(this.refs.cats).value;
     var name = ReactDOM.findDOMNode(this.refs.name).value;
-    var score = pleasure +achievement;
-     score += score;
+    var score = pleasure+achievement;
     var activity = {
       score: score,
       pleasure: pleasure,

@@ -18,8 +18,6 @@ App = React.createClass({
 
   mapData: function () {
     if (!this.data.activites)  { return [] };
-
-
     return _.chain(this.data.activites)
       .map(d => { return d.activity })
       .groupBy(activity => { return activity.cat})
