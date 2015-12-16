@@ -38,12 +38,10 @@ App = React.createClass({
       <div>
         <div className="p-header" >
             <div className="nav-wrapper">
-            <h1>
-           <span id="line"></span> <img src="http://www.clker.com/cliparts/F/N/l/r/i/v/scale.svg"/> Balance <img src="http://www.clker.com/cliparts/F/N/l/r/i/v/scale.svg"/> </h1>
-
+          <img src="http://www.clker.com/cliparts/F/N/l/r/i/v/scale.svg"/>     <span id = "title">BALANCE</span> <img src="http://www.clker.com/cliparts/F/N/l/r/i/v/scale.svg"/>
             </div>
         </div>
-      <div className="container" style= {{width:'25%', float:'left', display:'inline-block'}}>
+      <div className="container" style= {{width:'25%', float:'left'}}>
         <div className="row">
             <ActivityForm  style={{display:'inline-block'}}/>
               <ActivityList data={this.data.activites} style={{display:'inline-block'}}/>

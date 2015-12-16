@@ -13,6 +13,7 @@ CircleChart = React.createClass({
   render: function() {
         return (
           <div className="circle"></div>
+
         );
   },
   updateChart: function(props) {
@@ -20,18 +21,21 @@ CircleChart = React.createClass({
       data = data.sort(function(a,b) {
       return(a.totalScore - b.totalScore)
       });
-   var t_achievement=0;
-   var t_pleasure=0;
-   var balance= 0;
-   for (var i=0;i<=4;i++){
-   t_achievement+=data[i].achievement;
-   t_pleasure+=data[i].pleasure;
-   balance=(t_pleasure/t_achievement);
-    }
-  console.log(data,t_achievement,t_pleasure,  balance)
       console.log('data in  circlechart', data)
-      // d3.selectAll("svg > *").remove();
+     d3.selectAll("svg > *").remove();
   var svg = d3.select("svg");
+  var text = svg.selectAll("text")
+     .data(data)
+     .enter()
+     .append("text");
+  var textLabels = text
+-                 .attr("x", function(d,i) { return (i+1)*50 })
+-                 .attr("y", function(d,i) { return (i+1)*50 })
+-                 .text( function (d) { return d.cat; })
+-                 .attr("font-family", "Fugaz One")
+-                 .attr("font-size", "20px")
+-                 .attr("fill", "black");
+-
 
   var circle = svg.selectAll("circle")
         .data(data);
@@ -46,16 +50,31 @@ CircleChart = React.createClass({
   })
     .attr("r", function(d,i) {
         console.log(d,i)
-        if(i===4){return 160}
-        else if(i===3){return 130}
-        else if(i===2){return 120}
-        else if(i===1){return 110}
-        else {return 90}
+       if(i===4){return 40}
+          else if(i===3){return 70}
+          else if(i===2){return 100}
+          else if(i===1){return 130}
+          else {return 160}
     })
-     .attr("cx", function(d,i) {
-      return 10/(i+1)*20
-    })
+    .attr("cx", 100)
     .attr("cy", 100);
+
+  circle.transition()
+     .duration(2000)
+     .attr("cx", 250)
+    .attr("cy", 250);
+
+   var t_achievement=0;
+   var t_pleasure=0;
+   var balance= 0;
+    for (var i=0;i<=4;i++){
+      if (data[i].achievement!== undefined && data[i].pleasure !== undefined){
+         t_achievement+=data[i].achievement;
+         t_pleasure+=data[i].pleasure;
+         balance=(t_pleasure/t_achievement);
+      }
+  }
+    console.log(data,balance)
 
   circle.transition()
      .duration(2000)
@@ -67,8 +86,8 @@ CircleChart = React.createClass({
           else if(i===1){return 130}
           else {return 160}
         })
-     .attr("cx", function(d,i){return ((i-(i*.83))*100)+300})
-     .attr("cy", function(d,i){return ((i-(i*.83))*100)+300});
+     .attr("cx", function(d,i){return ((i-(i*balance))*200)+300})
+     .attr("cy", function(d,i){return ((i-(i))*200)+300});
     circle.exit()
         .remove();
 
