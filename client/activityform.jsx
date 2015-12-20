@@ -31,7 +31,8 @@ ActivityForm = React.createClass({
     <form className="col s12"onSubmit={this.handleSubmit} >
       <div className="sidenav">
         <div >
-          <h3 >Actividados</h3>
+          <h3 >Weekly Activities</h3>
+          <p id = "actdesc">Enter some of your weekly activities and ascribe them a category to visualize the balance in your life. The categories closer to the center hold more value to you. The circles will balance when you are balanced.</p>
           <select className = "styled-select" ref = "cats">
             <option value="Social">Social</option>
             <option value="Work">Work</option>
@@ -44,20 +45,21 @@ ActivityForm = React.createClass({
                   <div className="form-group">
             <div className="col-sm-10">
               <input type="text" className="form-control" id="input"
-                  placeholder="Enterle los actividados" ref="name" />
+                  placeholder="" ref="name" />
             </div>
           </div>
         <div className="panel-body">
             <div>
-            <label>Pleasure Score</label>
-              <input type="range" className="range"
+            <label>Pleasure Score for this activity </label>
+           <input type="range" className="range"
                    ref="pleasure" min ='1' max= '10' defaultvalue= '1'/>
             </div>
             <div >
-            <label>Achievement Score</label>
+            <label>Achievement Score for this activity</label>
               <input type="range" className="range"
                    ref="achievement" min ='1' max= '10' defaultvalue= '1' />
             </div>
+
 
           <div className="btn-group">
 

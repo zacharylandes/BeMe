@@ -18,24 +18,13 @@ CircleChart = React.createClass({
   },
   updateChart: function(props) {
    var data = props.data;
-      data = data.sort(function(a,b) {
+       data = data.sort(function(a,b) {
       return(a.totalScore - b.totalScore)
       });
       console.log('data in  circlechart', data)
      d3.selectAll("svg > *").remove();
   var svg = d3.select("svg");
-  var text = svg.selectAll("text")
-     .data(data)
-     .enter()
-     .append("text");
-  var textLabels = text
--                 .attr("x", function(d,i) { return (i+1)*50 })
--                 .attr("y", function(d,i) { return (i+1)*50 })
--                 .text( function (d) { return d.cat; })
--                 .attr("font-family", "Fugaz One")
--                 .attr("font-size", "20px")
--                 .attr("fill", "black");
--
+
 
   var circle = svg.selectAll("circle")
         .data(data);
@@ -68,14 +57,39 @@ CircleChart = React.createClass({
    var t_pleasure=0;
    var balance= 0;
     for (var i=0;i<=4;i++){
-      if (data[i].achievement!== undefined && data[i].pleasure !== undefined){
+
          t_achievement+=data[i].achievement;
          t_pleasure+=data[i].pleasure;
          balance=(t_pleasure/t_achievement);
-      }
+
   }
     console.log(data,balance)
-
+  var text = svg.selectAll("text")
+     .data(data)
+     .enter()
+     .append("text");
+    if(balance>1){
+    var textLabels = text
+                   .attr("x",30)
+                   .attr("y",300)
+                   .text(function(){ return "You have a bit of a pleasure surplus!"})
+                   .attr("font-family", "Fugaz One")
+                   .attr("font-size", "1.2em")
+                   .attr("fill", "#393d42");
+    }
+    else{
+    var textLabels = text
+                   .attr("x",30)
+                   .attr("y",300)
+                   .text(function(){ return "You have a bit of an achievement surplus!"})
+                   .attr("font-family", "Fugaz One")
+                   .attr("font-size", "1.2em")
+                   .attr("fill", "#393d42");
+    }
+    textLabels.transition()
+          .duration(3000)
+          .attr("x", 30)
+          .attr("y", 100);
   circle.transition()
      .duration(2000)
      .attr("r", function(d,i) {

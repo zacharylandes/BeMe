@@ -4,7 +4,6 @@
   color: #393d42;
   text-align: center;
 }
-
 .styled-select {
    border: none;
    overflow: hidden;
@@ -23,7 +22,6 @@
   border-radius: 700px;
   background: #7c5a33;
 }
-
 .fa-balance-scale {
   width: 200px;
   height: 200px;
@@ -37,8 +35,6 @@
   background-color: #7c5a33;
   border: none;
 }
-
-
 .p-header{
   height: 10%;
   width: 100%;
@@ -46,36 +42,34 @@
   padding: 0;
   display: inline-block;
 }
-
 .paper{
   display: inline-block;
 }
 .row{
-  padding: 5%;
+  padding:5% 0%;
   width: 100%;
 }
 #title{
   font-size: 2.5em;
 }
-
 .btn{
   width:100%;
 }
 .nav-wrapper{
   display: inline-block;
 }
-
 img{
   width: 40px;
   height: 40px;
 }
 h1{
-
-  font-size: 3em;
+  font-size: 3.5em;
   font-family: "Fugaz One";
   margin: 0;
   padding: 0;
-
+}
+.panel-body{
+padding: 10% 0%;
 }
 line{
   width: 200px;
@@ -89,4 +83,11 @@ font-family: "Fugaz One";
 float: right;
 position: relative;
 z-index: 1;
+}
+label{
+  font-size: 1em;
+  padding: 5% 0%;
+}
+.add{
+margin-top:10%;
 }

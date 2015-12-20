@@ -11,7 +11,7 @@ ActivityList = React.createClass({
     return (
       <div className="collection">
         <div >
-          <h3 >Los Actividados
+          <h3 >Your Activities
           </h3>
         </div>
         <div >

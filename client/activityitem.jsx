@@ -8,9 +8,12 @@ ActivityItem = React.createClass({
 
     return (
     <div>
-     <ul>
-       <li>{act} {cat} {score}</li>
-     </ul>
+
+       <ul><ol>Activity:{act}</ol>
+       <ol>Categoty:{cat}</ol>
+       <ol>Score:{score}</ol>
+       </ul>
+
     </div>
 
     );
