@@ -14,7 +14,6 @@
    margin:0% 37%;
    border-radius: 700;
 }
-
 .form-control, .range {
   background-color: #7c5a33;
   border: none;
@@ -69,7 +68,7 @@ h1{
   padding: 0;
 }
 .panel-body{
-padding: 10% 0%;
+padding-top: 10%;
 }
 line{
   width: 200px;
@@ -90,4 +89,9 @@ label{
 }
 .add{
 margin-top:10%;
+}
+.collection, ol{
+  float: left;
+  text-align: left;
+
 }

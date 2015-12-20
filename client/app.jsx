@@ -1,12 +1,10 @@
 App = React.createClass({
   mixins: [ReactMeteorData],
-
   getMeteorData() {
       return {
         activites: Activities.find({}).fetch()
       }
   },
-
   reducer: function (key) {
     return function (arr) {
       return _.reduce(arr, (result, a) => {
@@ -15,7 +13,6 @@ App = React.createClass({
       }, 0)
     }
   },
-
   mapData: function () {
     if (!this.data.activites)  { return [] };
     return _.chain(this.data.activites)
@@ -32,8 +29,6 @@ App = React.createClass({
   },
   render: function() {
     console.log('app form data', this.data)
-
-
     return (
       <div>
         <div className="p-header" >

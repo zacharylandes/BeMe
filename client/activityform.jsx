@@ -1,8 +1,4 @@
 ActivityForm = React.createClass({
-
-
-
-
   handleSubmit: function(e){
     e.preventDefault();
     // var totes = 0;
@@ -18,7 +14,6 @@ ActivityForm = React.createClass({
       cat:cat,
       name: name
     }
-
     Meteor.call("insertActivity", activity, function(e, r) {
       if (e) alert(e.reason)
     });
@@ -30,9 +25,10 @@ ActivityForm = React.createClass({
     return (
     <form className="col s12"onSubmit={this.handleSubmit} >
       <div className="sidenav">
-        <div >
+        <div>
           <h3 >Weekly Activities</h3>
-          <p id = "actdesc">Enter some of your weekly activities and ascribe them a category to visualize the balance in your life. The categories closer to the center hold more value to you. The circles will balance when you are balanced.</p>
+          <p id = "actdesc">Enter some of your weekly activities and ascribe them a category to visualize the balance in your life. The categories closer to the center hold more value to you. The circles will balance when you are balanced.
+          </p>
           <select className = "styled-select" ref = "cats">
             <option value="Social">Social</option>
             <option value="Work">Work</option>
@@ -41,35 +37,28 @@ ActivityForm = React.createClass({
              <option value="Daily">Daily</option>
           </select>
         </div>
-            <div className="panel-body">
-                  <div className="form-group">
-            <div className="col-sm-10">
-              <input type="text" className="form-control" id="input"
-                  placeholder="" ref="name" />
-            </div>
-          </div>
         <div className="panel-body">
-            <div>
+          <div className="col-sm-10">
+           <input type="text" className="form-control" id="input"
+            placeholder="" ref="name" />
+          </div>
+        </div>
+        <div className="panel-body">
+          <div>
             <label>Pleasure Score for this activity </label>
            <input type="range" className="range"
                    ref="pleasure" min ='1' max= '10' defaultvalue= '1'/>
-            </div>
-            <div >
+          </div>
+          <div>
             <label>Achievement Score for this activity</label>
               <input type="range" className="range"
                    ref="achievement" min ='1' max= '10' defaultvalue= '1' />
-            </div>
-
-
-          <div className="btn-group">
-
+          </div>
+        <div className="btn-group">
             <div >
               <button type="submit" className= "add">Add</button>
             </div>
           </div>
-
-          </div>
-
         </div>
       </div>
     </form>

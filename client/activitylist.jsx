@@ -6,7 +6,6 @@ ActivityList = React.createClass({
 
     });
   },
-
   render: function() {
     return (
       <div className="collection">
@@ -15,7 +14,7 @@ ActivityList = React.createClass({
           </h3>
         </div>
         <div >
-          <ul>
+          <ul key= {this.props.data.id}>
           {this.renderActivities()}
           </ul>
         </div>
