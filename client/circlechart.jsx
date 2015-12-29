@@ -1,3 +1,4 @@
+//setting up react component
 CircleChart = React.createClass({
   componentDidMount: function() {
       var el = ReactDOM.findDOMNode(this);
@@ -13,21 +14,18 @@ CircleChart = React.createClass({
   render: function() {
         return (
           <div className="circle"></div>
-
         );
   },
   updateChart: function(props) {
-   var data = props.data;
+  var  data = props.data;
        data = data.sort(function(a,b) {
-      return(a.totalScore - b.totalScore)
-      });
-      console.log('data in  circlechart', data)
-     d3.selectAll("svg > *").remove();
+        return(a.totalScore - b.totalScore)
+       });
+      d3.selectAll("svg > *").remove();
   var svg = d3.select("svg");
-
-
   var circle = svg.selectAll("circle")
         .data(data);
+//rendering circle with standard size and color
   circle.enter()
       .append("circle")
       .style("fill", function(d,i) {
@@ -37,37 +35,35 @@ CircleChart = React.createClass({
         else if(d.cat==='Daily'){return "rgb(52,61,36)"}
         else {return "rgb(37,107,142)"}
   })
-    .attr("r", function(d,i) {
-        console.log(d,i)
-       if(i===4){return 40}
-          else if(i===3){return 70}
-          else if(i===2){return 100}
-          else if(i===1){return 130}
-          else {return 160}
+      .attr("r", function(d,i) {
+         if(i===4){return 40}
+        else if(i===3){return 70}
+        else if(i===2){return 100}
+        else if(i===1){return 130}
+        else {return 160}
     })
     .attr("cx", 100)
     .attr("cy", 100);
-
+//circle animation
   circle.transition()
      .duration(2000)
      .attr("cx", 250)
     .attr("cy", 250);
 
+//getting ratio of achievement to pleasure to find var balance
    var t_achievement=0;
    var t_pleasure=0;
    var balance= 0;
     for (var i=0;i<=4;i++){
-
          t_achievement+=data[i].achievement;
          t_pleasure+=data[i].pleasure;
          balance=(t_pleasure/t_achievement);
-
-  }
-    console.log(data,balance)
-  var text = svg.selectAll("text")
+    }
+   var text = svg.selectAll("text")
      .data(data)
      .enter()
      .append("text");
+//rendering text to descrive user's balance
     if(balance>1){
     var textLabels = text
                    .attr("x",30)
@@ -90,6 +86,7 @@ CircleChart = React.createClass({
           .duration(3000)
           .attr("x", 30)
           .attr("y", 100);
+//moving the location of the circles to portray the user's balance
   circle.transition()
      .duration(2000)
      .attr("r", function(d,i) {

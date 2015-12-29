@@ -1,7 +1,7 @@
 ActivityForm = React.createClass({
+  //retrieving data from user
   handleSubmit: function(e){
     e.preventDefault();
-    // var totes = 0;
     var pleasure = parseInt(ReactDOM.findDOMNode(this.refs.pleasure).value);
     var achievement = parseInt(ReactDOM.findDOMNode(this.refs.achievement).value);
     var cat = ReactDOM.findDOMNode(this.refs.cats).value;

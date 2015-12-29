@@ -1,3 +1,4 @@
+//setting up react component with meteor
 App = React.createClass({
   mixins: [ReactMeteorData],
   getMeteorData() {
@@ -13,6 +14,7 @@ App = React.createClass({
       }, 0)
     }
   },
+  //applying pleasure and achievement scores to their correct categories
   mapData: function () {
     if (!this.data.activites)  { return [] };
     return _.chain(this.data.activites)
@@ -27,13 +29,14 @@ App = React.createClass({
       })
       .value()
   },
+  //rending page with correct react components
   render: function() {
     console.log('app form data', this.data)
     return (
       <div>
         <div className="p-header" >
             <div className="nav-wrapper">
-          <img src="http://www.clker.com/cliparts/F/N/l/r/i/v/scale.svg"/>     <span id = "title">BALANCE</span> <img src="http://www.clker.com/cliparts/F/N/l/r/i/v/scale.svg"/>
+          <img src="http://www.clker.com/cliparts/F/N/l/r/i/v/scale.svg"/><span id = "title">BALANCE</span> <img src="http://www.clker.com/cliparts/F/N/l/r/i/v/scale.svg"/>
             </div>
         </div>
       <div className="container" style= {{width:'25%', float:'left'}}>
@@ -52,9 +55,7 @@ App = React.createClass({
           <div className="paper">
             <CircleChart data={this.mapData()} width="500" height="500"/>
           </div>
-
       </div>
-
     );
   }
 });
