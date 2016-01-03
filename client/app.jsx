@@ -33,17 +33,22 @@ App = React.createClass({
   render: function() {
     return (
      <div>
-        <AccountsUIWrapper />
         <div className="p-header" >
             <div className="nav-wrapper">
-          <img src="http://www.clker.com/cliparts/F/N/l/r/i/v/scale.svg"/><span id = "title">BALANCE</span> <img src="http://www.clker.com/cliparts/F/N/l/r/i/v/scale.svg"/>
+          <img src="http://www.clker.com/cliparts/F/N/l/r/i/v/scale.svg"/><span id = "title">BALANCE IN YOUR LIFE</span> <img src="http://www.clker.com/cliparts/F/N/l/r/i/v/scale.svg"/>
             </div>
         </div>
       <div className="container" style= {{width:'25%', float:'left'}}>
         <div className="row">
+           <AccountsUIWrapper />
+            <div>
+            {this.data.currentUser ?
+              <div>
             <ActivityForm  style={{display:'inline-block'}}/>
                <ActivityList data={this.data.activites}
                style={{display:'inline-block'}}/>
+              </div>
+            }
         </div>
       </div>
           <div id = "labels">
