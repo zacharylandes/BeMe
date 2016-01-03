@@ -17,13 +17,10 @@ ActivityForm = React.createClass({
     Meteor.call("insertActivity", activity, function(e, r) {
       if (e) alert(e.reason)
     });
-    console.log(activity)
   },
-
   render: function() {
-
-    return (
-    <form className="col s12"onSubmit={this.handleSubmit} >
+   return (
+     <form className="col s12" onSubmit={this.handleSubmit}>
       <div className="sidenav">
         <div>
           <h3 >Weekly Activities</h3>
@@ -34,7 +31,7 @@ ActivityForm = React.createClass({
             <option value="Work">Work</option>
             <option value="Recreation">Recreation</option>
             <option value="Wellbeing">Wellbeing</option>
-             <option value="Daily">Daily</option>
+            <option value="Daily">Daily</option>
           </select>
         </div>
         <div className="panel-body">
@@ -54,14 +51,14 @@ ActivityForm = React.createClass({
               <input type="range" className="range"
                    ref="achievement" min ='1' max= '10' defaultvalue= '1' />
           </div>
-        <div className="btn-group">
-            <div >
+          <div className="btn-group">
+            <div>
               <button type="submit" className= "add">Add</button>
             </div>
           </div>
         </div>
-      </div>
-    </form>
+       </div>
+     </form>
     );
   }
 })

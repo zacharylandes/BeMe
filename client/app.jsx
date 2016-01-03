@@ -31,9 +31,9 @@ App = React.createClass({
   },
   //rending page with correct react components
   render: function() {
-    console.log('app form data', this.data)
     return (
-      <div>
+     <div>
+        <AccountsUIWrapper />
         <div className="p-header" >
             <div className="nav-wrapper">
           <img src="http://www.clker.com/cliparts/F/N/l/r/i/v/scale.svg"/><span id = "title">BALANCE</span> <img src="http://www.clker.com/cliparts/F/N/l/r/i/v/scale.svg"/>
@@ -42,16 +42,17 @@ App = React.createClass({
       <div className="container" style= {{width:'25%', float:'left'}}>
         <div className="row">
             <ActivityForm  style={{display:'inline-block'}}/>
-              <ActivityList data={this.data.activites} style={{display:'inline-block'}}/>
-          </div>
-       </div>
-        <div id = "labels">
-          <p style = {{color:"rgb(42,57,61)"}}>Social</p>
-          <p style = {{color:"rgb(124,90,51)"}}>Recreation</p>
-          <p style = {{color:"rgb(124,53,51)"}}>Wellbeing</p>
-          <p style = {{color:"rgb(52,61,36)"}}>Daily</p>
-          <p style = {{color:"rgb(37,107,142)"}}>Work</p>
+               <ActivityList data={this.data.activites}
+               style={{display:'inline-block'}}/>
         </div>
+      </div>
+          <div id = "labels">
+            <p style = {{color:"rgb(42,57,61)"}}>Social</p>
+            <p style = {{color:"rgb(124,90,51)"}}>Recreation</p>
+            <p style = {{color:"rgb(124,53,51)"}}>Wellbeing</p>
+            <p style = {{color:"rgb(52,61,36)"}}>Daily</p>
+            <p style = {{color:"rgb(37,107,142)"}}>Work</p>
+          </div>
           <div className="paper">
             <CircleChart data={this.mapData()} width="500" height="500"/>
           </div>

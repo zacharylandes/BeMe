@@ -63,25 +63,25 @@ CircleChart = React.createClass({
    .data(data)
    .enter()
    .append("text");
-//rendering text to descrive user's balance
+//rendering text to describe user's balance
     if(balance>1){
-    var textLabels = text
-         .attr("x",30)
-         .attr("y",300)
-         .text(function(){ return "You have a bit of a pleasure surplus!"})
-         .attr("font-family", "Fugaz One")
-         .attr("font-size", "1.2em")
-         .attr("fill", "#393d42");
-    }
+      var textLabels = text
+           .attr("x",30)
+           .attr("y",300)
+           .text(function(){ return "You have a bit of a pleasure surplus!"})
+           .attr("font-family", "Fugaz One")
+           .attr("font-size", "1.2em")
+           .attr("fill", "#393d42");
+      }
     else{
-    var textLabels = text
-         .attr("x",30)
-         .attr("y",300)
-         .text(function(){ return "You have a bit of an achievement surplus!"})
-         .attr("font-family", "Fugaz One")
-         .attr("font-size", "1.2em")
-         .attr("fill", "#393d42");
-    }
+      var textLabels = text
+           .attr("x",30)
+           .attr("y",300)
+           .text(function(){ return "You have a bit of an achievement surplus!"})
+           .attr("font-family", "Fugaz One")
+           .attr("font-size", "1.2em")
+           .attr("fill", "#393d42");
+      }
     textLabels.transition()
         .duration(3000)
         .attr("x", 30)
@@ -101,7 +101,5 @@ CircleChart = React.createClass({
    .attr("cy", function(d,i){return ((i-(i))*200)+300});
     circle.exit()
         .remove();
-
-
-}
+   }
 });
