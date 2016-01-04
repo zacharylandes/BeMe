@@ -17,8 +17,7 @@ CircleChart = React.createClass({
         );
   },
   updateChart: function(props) {
-  var  data = props.data;
-       data = data.sort(function(a,b) {
+    var data = props.data.sort(function(a,b) {
         return(a.totalScore - b.totalScore)
        });
       d3.selectAll("svg > *").remove();

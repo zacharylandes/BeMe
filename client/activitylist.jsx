@@ -9,10 +9,9 @@ ActivityList = React.createClass({
     return (
       <div className="collection">
         <div >
-          <h3 >Your Activities
-          </h3>
+          <h3 >Your Activities </h3>
         </div>
-        <div >
+        <div>
           <ul key= {this.props.data.id}>
           {this.renderActivities()}
           </ul>

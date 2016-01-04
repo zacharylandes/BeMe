@@ -3,7 +3,8 @@ App = React.createClass({
   mixins: [ReactMeteorData],
   getMeteorData() {
       return {
-        activites: Activities.find({}).fetch()
+        activites: Activities.find({}).fetch(),
+        incompleteCount: Activities.find({checked: {$ne: true}}).count()
       }
   },
   reducer: function (key) {
@@ -42,13 +43,10 @@ App = React.createClass({
         <div className="row">
            <AccountsUIWrapper />
             <div>
-            {this.data.currentUser ?
-              <div>
             <ActivityForm  style={{display:'inline-block'}}/>
                <ActivityList data={this.data.activites}
                style={{display:'inline-block'}}/>
-              </div>
-            }
+            </div>
         </div>
       </div>
           <div id = "labels">
