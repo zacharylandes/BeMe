@@ -36,7 +36,7 @@ App = React.createClass({
      <div>
         <div className="p-header" >
             <div className="nav-wrapper">
-          <img src="http://www.clker.com/cliparts/F/N/l/r/i/v/scale.svg"/><span id = "title">BALANCE IN YOUR LIFE</span> <img src="http://www.clker.com/cliparts/F/N/l/r/i/v/scale.svg"/>
+              <span id = "title">BALANCE</span>
             </div>
         </div>
       <div className="container" style= {{width:'25%', float:'left'}}>
