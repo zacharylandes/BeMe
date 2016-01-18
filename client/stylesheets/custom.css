@@ -14,9 +14,16 @@
   color: #393d42;
   font-family: 'Amatic SC';
 }
-#login-dropdown-list, .login-close-text{
+#login-dropdown-list, .login-close-text, #login-username-label-and-input,#login-password-label-and-input,#login-username, #login-password, .accounts-dialog {
   background: #393d42;
   border: none;
+  color: #B3CFDA;
+}
+#amount{
+
+}
+#login-buttons-open-change-password, #login-buttons-logout{
+  background: #B3CFDA;
 }
 .styled-select {
    border: none;
@@ -25,7 +32,7 @@
    border: none;
    width: 34%;
    height: 25%;
-   margin:0% 37%;
+   margin:0% 35%;
    border-radius: 700;
    color: #B3CFDA;
    font-size: 1.2em;

@@ -15,6 +15,7 @@ App = React.createClass({
       }, 0)
     }
   },
+
   //applying pleasure and achievement scores to their correct categories
   mapData: function () {
     if (!this.data.activites)  { return [] };

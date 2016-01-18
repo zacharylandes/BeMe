@@ -43,7 +43,7 @@ ActivityForm = React.createClass({
         <div className="panel-body">
           <div>
             <label>Pleasure Score for this activity </label>
-           <input type="range" oninput="amount.value=rangeInput.value" step="1" defaultvalue="5" type="range" ref="pleasure" id = "pleasureinput" min ='1' max= '10'/>
+           <input type="range" oninput="amount.value=pleasureinput.value" step="1" defaultvalue="5" name="pleasureinput" ref="pleasure" id = "pleasureinput" min ='1' max= '10'/>
           <output name="amount" id="amount" for="pleasureinput">0</output>
           </div>
           <div>
