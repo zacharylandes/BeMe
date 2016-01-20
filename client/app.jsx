@@ -42,11 +42,13 @@ App = React.createClass({
         </div>
       <div className="container" style= {{width:'25%', float:'left'}}>
         <div className="row">
-           <AccountsUIWrapper />
             <div>
-            <ActivityForm  style={{display:'inline-block'}}/>
-               <ActivityList data={this.data.activites}
-               style={{display:'inline-block'}}/>
+
+                <AccountsUIWrapper />
+                  { this.data.currentUser ?
+                   <ActivityForm  style={{display:'inline-block'}}/>
+                   <ActivityList data={this.data.activites}
+                   style={{display:'inline-block'}}/>
             </div>
         </div>
       </div>
@@ -60,6 +62,8 @@ App = React.createClass({
           <div className="paper">
             <CircleChart data={this.mapData()} width="500" height="500"/>
           </div>
+              }
+
       </div>
     );
   }
