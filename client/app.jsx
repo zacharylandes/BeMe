@@ -4,7 +4,8 @@ App = React.createClass({
   getMeteorData() {
       return {
         activites: Activities.find({}).fetch(),
-        incompleteCount: Activities.find({checked: {$ne: true}}).count()
+        incompleteCount: Activities.find({checked: {$ne: true}}).count(),
+         currentUser: Meteor.user()
       }
   },
   reducer: function (key) {
@@ -35,6 +36,7 @@ App = React.createClass({
   render: function() {
     return (
      <div>
+      {this.data.currentUser ?
         <div className="p-header" >
             <div className="nav-wrapper">
               <span id = "title">BALANCE</span>
@@ -43,12 +45,9 @@ App = React.createClass({
       <div className="container" style= {{width:'25%', float:'left'}}>
         <div className="row">
             <div>
-
-                <AccountsUIWrapper />
-                  { this.data.currentUser ?
-                   <ActivityForm  style={{display:'inline-block'}}/>
-                   <ActivityList data={this.data.activites}
-                   style={{display:'inline-block'}}/>
+                 <ActivityForm  style={{display:'inline-block'}}/>
+                 <ActivityList data={this.data.activites}
+                 style={{display:'inline-block'}}/>
             </div>
         </div>
       </div>
@@ -59,12 +58,11 @@ App = React.createClass({
             <p style = {{color:"rgb(52,61,36)"}}>Daily</p>
             <p style = {{color:"rgb(37,107,142)"}}>Work</p>
           </div>
-          <div className="paper">
-            <CircleChart data={this.mapData()} width="500" height="500"/>
-          </div>
-              }
-
-      </div>
+            <div className="paper">
+              <CircleChart data={this.mapData()} width="500" height="500"/>
+            </div>
+}
+            </div>
     );
   }
 });

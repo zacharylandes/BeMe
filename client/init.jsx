@@ -1,4 +1,4 @@
-
+Activities = new Meteor.Collection("Activities");
 if (Meteor.isClient) {
   // This code is executed on the client only
   Accounts.ui.config({

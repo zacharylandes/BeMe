@@ -14,9 +14,10 @@ ActivityForm = React.createClass({
       cat:cat,
       name: name
     }
-    Meteor.call("insertActivity", activity, function(e, r) {
-      if (e) alert(e.reason)
-    });
+      return Activities.insert({activity: activity,
+                             createdAt: new Date(),
+                             owner: Meteor.userId(),
+                             username: Meteor.user().username});
   },
   render: function() {
    return (
@@ -59,6 +60,7 @@ ActivityForm = React.createClass({
         </div>
        </div>
      </form>
+
     );
   }
 })
