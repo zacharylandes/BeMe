@@ -21,6 +21,7 @@ ActivityForm = React.createClass({
   },
   render: function() {
    return (
+            <div>
      <form className="col s12" onSubmit={this.handleSubmit}>
       <div className="sidenav">
         <div>
@@ -60,7 +61,7 @@ ActivityForm = React.createClass({
         </div>
        </div>
      </form>
-
+    </div>
     );
   }
 })

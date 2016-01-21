@@ -12,7 +12,7 @@ ActivityList = React.createClass({
           <h3 >Your Activities </h3>
         </div>
         <div>
-          <ul key= {this.props.data.id}>
+          <ul key= {this.props.data}>
           {this.renderActivities()}
           </ul>
         </div>
