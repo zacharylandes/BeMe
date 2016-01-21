@@ -1,0 +1,139 @@
+*{
+  background-image: url("https://930stratford.files.wordpress.com/2013/02/screen-shot-2013-02-03-at-6-17-08-pm.png");
+  font-family: 'Amatic SC';
+  color: #393d42;
+  text-align: center;
+  font-weight: 700;
+}
+.nav-wrapper{
+   -webkit-transform: rotate(7deg);
+
+}
+#login-sign-in-link, #login-name-link, .login-button{
+  font-size: 2.4em;
+  color: #393d42;
+  font-family: 'Amatic SC';
+}
+#login-dropdown-list, .login-close-text, #login-username-label-and-input,#login-password-label-and-input,#login-username, #login-password, .accounts-dialog {
+  background: #393d42;
+  border: none;
+  color: #B3CFDA;
+}
+#amount{
+
+}
+#login-buttons-open-change-password, #login-buttons-logout{
+  background: #B3CFDA;
+}
+.styled-select {
+   border: none;
+   overflow: hidden;
+   background: #393d42;
+   border: none;
+   width: 34%;
+   height: 25%;
+   margin:0% 35%;
+   border-radius: 700;
+   color: #B3CFDA;
+   font-size: 1.2em;
+}
+#actdesc{
+  font-size: 1.5em;
+   font-weight: 700;
+}
+h3{
+  font-size: 1.8em;
+  font-weight: 700;
+}
+
+text{
+  font-size: 2em;
+}
+.form-control, .range {
+  color: #B3CFDA;
+  border: none;
+  width:100%;
+  border-radius: 700px;
+  background: #393d42;
+  font-size: 1.2em;
+}
+.fa-balance-scale {
+  width: 200px;
+  height: 200px;
+}
+#input{
+  margin:0% 10%;
+}
+input:after{
+    content: attr(value);
+    color: black;
+    position: absolute;
+}
+.add{
+  color: #B3CFDA;
+  width: 150px;
+  border-radius: 300px;
+  background: #393d42;
+  border: none;
+  font-size: 1.5em;
+}
+.p-header{
+  height: 10%;
+  width: 100%;
+  margin:0;
+  padding: 0;
+  display: inline-block;
+}
+.paper{
+  display: inline-block;
+}
+.row{
+  padding:5% 0%;
+  width: 100%;
+}
+#title{
+  font-size: 5em;
+}
+.btn{
+  width:100%;
+}
+.nav-wrapper{
+  display: inline-block;
+}
+img{
+  width: 40px;
+  height: 40px;
+}
+h1{
+  font-size: 4em;
+  margin: 0;
+  padding: 0;
+}
+.panel-body{
+padding-top: 10%;
+}
+line{
+  width: 200px;
+  height: 20px;
+  background-color:  #7c5a33;
+}
+#labels{
+padding: 5%;
+font-size: 50px;
+
+float: right;
+position: relative;
+z-index: 1;
+}
+label{
+  font-size: 1.6em;
+  padding: 5% 0%;
+}
+.add{
+margin-top:10%;
+}
+.collection ol{
+  float: left;
+  text-align: left;
+  font-size: 1.5em;
+}
