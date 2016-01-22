@@ -4,15 +4,18 @@ if (Meteor.isClient) {
   Accounts.ui.config({
     passwordSignupFields: "USERNAME_ONLY"
   });
+}
+if(Meteor.is_server) {
+
+  Activities.allow({
+    insert: function (userId,doc) {
+      /* user and doc checks ,
+      return true to allow insert */
+      return true;
+    }
+  });
 
 }
-// if (Meteor.isServer) {
-// Activities.allow({
-//   insert: function(userId, a) {
-//     // only allow posting if you are logged in
-//     return !! userId;
-//   }
-// }
 
 Meteor.startup(function() {
   ReactDOM.render(<App />,  document.getElementById('container'));

@@ -44,8 +44,6 @@ App = React.createClass({
       <div className="container" style= {{width:'25%', float:'left'}}>
         <div className="row">
                  <ActivityForm  style={{display:'inline-block'}}/>
-                 <ActivityList data={this.data.activites}
-                 style={{display:'inline-block'}}/>
         </div>
       </div>
           <div id = "labels">

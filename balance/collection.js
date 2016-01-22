@@ -11,8 +11,8 @@ Meteor.methods({
 return Activities.insert({activity: activity,
                               createdAt: new Date(),
                               owner: Meteor.userId(),
-                              username: Meteor.user().username,
-                              currentUser: Meteor.user()});
+                              username: Meteor.user().username
+                            });
 
   },
 

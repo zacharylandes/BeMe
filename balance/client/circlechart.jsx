@@ -20,7 +20,6 @@ CircleChart = React.createClass({
     var data = props.data.sort(function(a,b) {
         return(a.totalScore - b.totalScore)
        });
-    console.log(this.data.currentUser)
       d3.selectAll("svg > *").remove();
   var svg = d3.select("svg");
   var circle = svg.selectAll("circle")
